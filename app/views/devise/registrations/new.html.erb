@@ -1,0 +1,29 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div class="row h-100">
+    <div class="col-sm-12 my-auto">
+      <div class="card card-block w-50 p-3 mx-auto">
+        <form class="form-signin">
+          <br><img class="mb-4 mx-auto my-auto" src="https://img.icons8.com/office/160/000000/home.png" alt="" width="72" height="72"><br>
+          <h1 class="h3 mb-3 font-weight-normal text-center">Create an account</h1>
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <span class="help-block">(<%= @minimum_password_length %> characters minimum)</span>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+  </div>
+<%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.submit "Sign up", class: 'btn btn-primary' %><br>
+<% end %>
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row">
+<div class="col-sm-12">
+  <img class="mb-4 d-none d-md-block mx-auto my-auto" src="http://openweathermap.org/img/wn/<%= @home.weather_icon %>.png" alt="">
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <p>Temperature:</p>
+  </div>
+  <div class="col-sm-6">
+    <p style="text-align: center"><%= @home.current_temp.round %>°</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <p>Feels Like:</p>
+  </div>
+  <div class="col-sm-6">
+    <p style="text-align: center"><%= @home.feels_like.round %>°</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <p>Sunrise:</p>
+  </div>
+  <div class="col-sm-6">
+    <p style="text-align: center"><%= Time.at(@home.sunrise).strftime("%I:%M%P") %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <p>Sunset:</p>
+  </div>
+  <div class="col-sm-6">
+    <p style="text-align: center"><%= Time.at(@home.sunset).strftime("%I:%M%P") %></p>
+  </div>
+</div>
+
+
+

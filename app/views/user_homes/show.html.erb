@@ -1,0 +1,115 @@
+
+<style>
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+  .row.content {height: 550px}
+
+  /* Set gray background color and 100% height */
+  .well {
+    background-color: #999999;
+  }
+
+  /* On small screens, set height to 'auto' for the grid */
+  @media screen and (max-width: 767px) {
+    .row.content {height: auto;}
+  }
+
+  .map-container{
+    overflow:hidden;
+    position:relative;
+    height:300px;
+    width: 100%;
+  }
+  .map-container iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+  }
+</style>
+
+
+<div class="row content">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-6">
+      <div class="well">
+        <h4>Travel Checker</h4>
+        <div id="map-container" class="map-container">
+          <div id="map-canvas" class="map-canvas">
+          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB0uS1K_J58SQoGZXpumuIRc9Hr26C4KCo&q=<%= @home.address %>&maptype=satellite" frameborder="0"
+                  style="border:0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+            <h4>Weather</h4>
+            <%= render 'homes/weather_data'%>
+          </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well">
+            <h4>Users</h4>
+            <p>1 Million</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <h4>Pet Feedings</h4>
+            <p>100 Million</p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Sessions</h4>
+            <p>10 Million</p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Bounce</h4>
+            <p>30%</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+            <p>Text</p>
+            <p>Text</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+            <p>Text</p>
+            <p>Text</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+            <p>Text</p>
+            <p>Text</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well">
+            <p>Text</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <p>Text</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
