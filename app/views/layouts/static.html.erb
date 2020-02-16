@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HomeBoard</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="border-radius: 0px; margin-bottom: 0px;">
+    <img class="mb-4 d-none d-md-block mx-auto my-auto" src="https://img.icons8.com/office/80/000000/home.png" alt="" width="20" height="20">
+    <a class="navbar-brand" href=<%=root_path %>>  HomeBoard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="nav navbar-nav navbar-right text-center">
+        <li><a href=<%= new_user_registration_path %>><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
+        <li><a href=<%= user_session_path %>><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href=<%= destroy_user_session_path %>><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+
+<main role="main" class="container-fluid" style="padding-top: 40px;">
+  <%= notice %>
+  <%= alert %>
+  <%= yield %>
+</main>
+<footer class="footer">
+  <div class="container text-center">
+    <span class="text-muted">HomeBoard &copy; 2020</span>
+  </div>
+</footer>
+
+</body>
+</html>
+</html>
