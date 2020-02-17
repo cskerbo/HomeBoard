@@ -11,7 +11,7 @@ class HomesController < ApplicationController
     @user = current_user
     @states = helpers.state_list
     @home = Home.create(home_params)
-    @home.user_ids = @user.id
+    #@home.user_ids = @user.id
     if @home.save
       helpers.address(@home.id)
       helpers.weather(@home.id)
@@ -22,13 +22,13 @@ class HomesController < ApplicationController
     end
   end
 
-   def show
-      @user = current_user
-      @home = Home.find(params[:id])
-      if !@home.user_ids.include?(current_user.id)
-        redirect_to '/403'
-      end
-   end
+  def show
+    @user = current_user
+    @home = Home.find(params[:id])
+    if !@home.user_ids.include?(current_user.id)
+      redirect_to '/403'
+    end
+  end
 
   def index
     @user = current_user

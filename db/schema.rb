@@ -48,13 +48,6 @@ ActiveRecord::Schema.define(version: 20200210201919) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "user_homes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "home_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "provider", limit: 50, default: "", null: false
