@@ -1,2 +1,305 @@
-<h1><%=@home.name %></h1>
-<h1><%=@home.zip_code %></h1>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">home</i>
+            </div>
+            <h3 class="card-title"><%= @home.name %></h3>
+            <p class="card-category"><%= @home.address %></p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">format_paint</i>
+              <a href="javascript:;">Edit Home Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">filter_drama</i>
+            </div>
+            <h3 class="card-title">Weather</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i> Updated:
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">pets</i>
+            </div>
+            <h3 class="card-title">Pet Status</h3><br>
+            <button class="btn btn-primary btn-block" id="pet-button" onclick="updateFeedingStatus('pet-feeding'); updateButtonStatus('pet-button');">Log Feeding</button>
+            <p class="card-category" id="pet-feeding"></p>
+            <p class="card-category">Last switched at: <bold>1:00pm</bold></p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">watch_later</i> Last updated:
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">network_check</i>
+            </div>
+            <h3 class="card-title">Network Status</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">update</i> Just Updated
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-primary">
+            <h4><i class="material-icons">notification_important</i> Tasks</h4>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="profile">
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>Take out trash</td>
+                    <td>Chris</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>Call junk removal</td>
+                    <td>Eric</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>Schedule March trip</td>
+                    <td>Allan</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>Clean up garage</td>
+                    <td>Michael</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-warning">
+            <h4><i class="material-icons">list</i> Grocery List</h4>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="profile">
+                <table class="table">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>Milk</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>Eggs</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td> Peanut Butter</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>Cereal</td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
+
+    });
+    function updateFeedingStatus(id) {
+        var x = document.getElementById(id);
+        if (x.innerHTML === "") {
+            x.innerHTML = new Date;
+        } else {
+            x.innerHTML = "";
+        }
+    }
+    function updateButtonStatus(id) {
+        var x = document.getElementById(id);
+        if (x.innerHTML != "Reset Status") {
+            x.innerHTML = 'Reset Status';
+        } else {
+            x.innerHTML = "Log A Feeding";
+        }
+    }
+</script>

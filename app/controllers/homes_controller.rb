@@ -1,5 +1,8 @@
 class HomesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
+    @user = current_user
     @home = Home.new
     @states = helpers.state_list
   end
@@ -25,7 +28,12 @@ class HomesController < ApplicationController
       if !@home.user_ids.include?(current_user.id)
         redirect_to '/403'
       end
+   end
+
+  def index
+    @user = current_user
   end
+
 
   private
 

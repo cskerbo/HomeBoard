@@ -41,7 +41,7 @@
               <i class="material-icons">pets</i>
             </div>
             <h3 class="card-title">Pet Status</h3><br>
-            <button class="btn btn-primary btn-block" id="pet-button" onclick="updateFeedingStatus('pet-feeding'); updateButtonStatus('pet-button');">Submit Feeding</button>
+            <button class="btn btn-primary btn-block" id="pet-button" onclick="updateFeedingStatus('pet-feeding'); updateButtonStatus('pet-button');">Log Feeding</button>
             <p class="card-category" id="pet-feeding"></p>
             <p class="card-category">Last switched at: <bold>1:00pm</bold></p>
           </div>
@@ -289,7 +289,7 @@
     function updateFeedingStatus(id) {
         var x = document.getElementById(id);
         if (x.innerHTML === "") {
-            x.innerHTML = '<%= Time.now %>';
+            x.innerHTML = new Date;
         } else {
             x.innerHTML = "";
         }
@@ -299,7 +299,7 @@
         if (x.innerHTML != "Reset Status") {
             x.innerHTML = 'Reset Status';
         } else {
-            x.innerHTML = "Submit Feeding";
+            x.innerHTML = "Log A Feeding";
         }
     }
 </script>

@@ -4,12 +4,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     match '/session/user', to: 'devise/sessions#create', via: :post
   end
-  resources :user_homes
   resources :widgets
   resources :homes
   resources :homes
   resources :users do
-    resources :user_homes
+    resources :homes
   end
   resources :static
   root 'page#index'
