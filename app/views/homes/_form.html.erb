@@ -12,26 +12,46 @@
         </ul>
       </div>
     <% end %>
-  <div class="form-group">
-    <%= f.label :name, "Home Name" %>
-    <span class="help-block">(This will function as the name of your dashboard.)</span>
-    <%= f.text_field :name, class: "form-control", placeholder: "ex: Addams Family", :required => true %>
-  </div>
-
-  <div class="form-group">
-    <span class="help-block">(HomeBoard does not track your location, your data is is encrypted, and no user data is provided to third parties. We need this to show you geographic information.)</span>
-    <%= f.label :street, "Street" %><br>
-    <%= f.text_field :street, class: "form-control", placeholder: "ex: 123 Drive St", :required => true %>
-    <%= f.label :city, "City" %><br>
-    <%= f.text_field :city, class: "form-control", placeholder: "ex: Auburn", :required => true %>
-    <%= f.label :zip_code, "Zip Code" %><br>
-    <%= f.number_field :zip_code, class: "form-control", placeholder: "ex: 98001", :required => true %>
-    <%= f.label :state, "State" %><br>
-    <%= f.select :state, options_for_select(@states), class: "form-control", placeholder: "ex: WA", :prompt => "Select a state", :required => true %><br>
-  </div>
-    <div class="actions">
-      <br/>
-      <%= f.submit class: "btn btn-primary" %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :name, "Home Name", class: "bmd-label-floating" %>
+          <%= f.text_field :name, class: "form-control", :required => true %>
+        </div>
+      </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :street, "Street", class: "bmd-label-floating" %>
+          <%= f.text_field :street, class: "form-control", :required => true %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :city, "City", class: "bmd-label-floating" %>
+              <%= f.text_field :city, class: "form-control", :required => true %>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :zip_code, "Zip Code", class: "bmd-label-floating" %>
+              <%= f.number_field :zip_code, class: "form-control", :required => true %>
+            </div>
+          </div>
+    </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :state, "State", class: "bmd-label" %><br>
+        <%= f.select :state, options_for_select(@states), {}, {class: "form-control", required: true, placeholder: "Select State"} %>
+      </div>
+    </div>
+  </div>
+    <%= f.submit class: "btn btn-primary pull-right" %>
+  <div class="clearfix"></div>
 <% end %>
