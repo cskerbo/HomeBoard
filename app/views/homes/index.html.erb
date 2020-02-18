@@ -6,23 +6,11 @@
       <h3><%= 'Welcome to HomeBoard!' %></h3>
       <p><%= 'Get starting by creating your first home. Once you create a home, you will have access to a custom dashboard for your house.' %></p>
     <%end %>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header card-header-primary">
-            <h3 class="card-title">Create a new Home</h3>
-          </div>
-          <div class="card-body">
-            <% if @user.homes.count < 1 %>
-              <p class="card-category"><%= "First, lets's get some details about your house." %></p>
-            <% else %>
-              <p class="card-category"><%= "Enjoying HomeBoard? Great!" %><br><%= "If you have a need for additional dashboards you're in luck - you can create as many HomeBoards as you need." %></p>
-            <% end %>
-            <%= render 'form' %>
-
-          </div>
-        </div>
-      </div>
-    </div>
+    <% if @user.homes.count < 1 %>
+      <p class="card-category"><%= "First, lets's get some details about your house." %></p>
+    <% else %>
+      <p class="card-category"><%= "Enjoying HomeBoard? Great!" %><br><%= "If you have a need for additional dashboards you're in luck - you can create as many HomeBoards as you need." %></p>
+    <% end %>
+    <%= render 'form' %>
   </div>
 </div>

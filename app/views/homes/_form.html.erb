@@ -1,3 +1,12 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h3 class="card-title">Create a new Home</h3>
+      </div>
+      <div class="card-body">
+
+
 <%= form_for [@user, @home] do |f| %>
     <% if @home.errors.any? %>
       <div id="error_explanation">
@@ -12,6 +21,7 @@
         </ul>
       </div>
     <% end %>
+          <h4><b>Home Information</b></h4>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
@@ -52,6 +62,19 @@
       </div>
     </div>
   </div>
+          <h4><b>Widgets</b></h4>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <%= f.label :weather_widget, "Weather Widget", class: "bmd-label" %><br>
+                <%= f.check_box :weather_widget, {class: "form-control"}, true, false %>
+              </div>
+            </div>
+          </div>
     <%= f.submit class: "btn btn-primary pull-right" %>
   <div class="clearfix"></div>
 <% end %>
+      </div>
+    </div>
+  </div>
+</div>

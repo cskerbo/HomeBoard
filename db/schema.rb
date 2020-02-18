@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200218000915) do
+ActiveRecord::Schema.define(version: 20200217235049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20200218000915) do
     t.float "latitude"
     t.float "longitude"
     t.string "timezone"
+    t.boolean "weather_widget", default: false
+    t.integer "weather_widget_id"
+    t.boolean "pet_widget", default: false
+    t.integer "pet_widget_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -79,26 +83,10 @@ ActiveRecord::Schema.define(version: 20200218000915) do
     t.float "temp_max"
     t.integer "sunrise"
     t.integer "sunset"
-    t.integer "widgets_id"
-  end
-
-  create_table "widgets", force: :cascade do |t|
-    t.boolean "weather_widget", default: false
-    t.integer "weather_widget_id"
-    t.boolean "pet_widget", default: false
-    t.integer "pet_widget_id"
-    t.boolean "task_widget", default: false
-    t.integer "task_widget_id"
-    t.boolean "grocery_widget", default: false
-    t.integer "grocery_widget_id"
-    t.boolean "network_widget", default: false
-    t.integer "network_widget_id"
-    t.boolean "ring_widget", default: false
-    t.integer "ring_widget_id"
-    t.boolean "hue_widget", default: false
-    t.integer "hue_widget_id"
+    t.integer "widget_id"
     t.integer "home_id"
-    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

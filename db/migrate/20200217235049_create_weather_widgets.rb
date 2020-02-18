@@ -1,4 +1,4 @@
-class CreateWeatherWidget < ActiveRecord::Migration[5.1]
+class CreateWeatherWidgets < ActiveRecord::Migration[5.1]
   def change
     create_table :weather_widgets do |t|
       t.integer :weather_id
@@ -11,7 +11,10 @@ class CreateWeatherWidget < ActiveRecord::Migration[5.1]
       t.float :temp_max
       t.integer :sunrise
       t.integer :sunset
-      t.integer :widgets_id
+      t.integer :widget_id
+      t.integer :home_id
+
+      t.timestamps
     end
   end
 end

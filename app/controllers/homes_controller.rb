@@ -4,7 +4,6 @@ class HomesController < ApplicationController
   def new
     @user = current_user
     @home = Home.new
-    @widget = Widget.new
     @states = helpers.state_list
   end
 
@@ -16,16 +15,19 @@ class HomesController < ApplicationController
     if @home.save
       helpers.address(@home.id)
       helpers.timezone(@home.id)
-      redirect_to user_home_widgets_path(current_user, @home)
+      helpers.create_weather_widget(@home.id)
+      redirect_to user_home_path(current_user, @home)
     else
       render 'index'
     end
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:user_id])
     @home = Home.find(params[:id])
-    if @home.user_id != current_user.id
+    helpers.update_weather_widget(@home.weather_widget_id)
+    @weather_widget = WeatherWidget.find(@home.weather_widget_id)
+    if @home.user_id != current_user.id || @user.id != current_user.id
       redirect_to '/403'
     end
   end
@@ -40,14 +42,12 @@ class HomesController < ApplicationController
     @home = Home.find(params[:id])
     @user = current_user
     @states = helpers.state_list
-    @widget = Widget.new
   end
-
 
   private
 
   def home_params
-    params.require(:home).permit(:name, :zip_code, :street, :city, :state)
+    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget)
   end
 
 end

@@ -10,6 +10,10 @@ class CreateHomes < ActiveRecord::Migration[5.1]
       t.float :latitude
       t.float :longitude
       t.string :timezone
+      t.boolean :weather_widget, default: false
+      t.integer :weather_widget_id
+      t.boolean :pets_widget, default: false
+      t.integer :pets_widget_id
 
       t.timestamps
     end
