@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200217174805) do
+ActiveRecord::Schema.define(version: 20200218000915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 20200217174805) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.integer "weather_id"
-    t.string "weather_main"
-    t.string "weather_description"
-    t.string "weather_icon"
-    t.float "current_temp"
-    t.float "feels_like"
-    t.float "temp_min"
-    t.float "temp_max"
-    t.integer "sunrise"
-    t.integer "sunset"
     t.string "timezone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,10 +68,37 @@ ActiveRecord::Schema.define(version: 20200217174805) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "weather_widgets", force: :cascade do |t|
+    t.integer "weather_id"
+    t.string "weather_main"
+    t.string "weather_description"
+    t.string "weather_icon"
+    t.float "current_temp"
+    t.float "feels_like"
+    t.float "temp_min"
+    t.float "temp_max"
+    t.integer "sunrise"
+    t.integer "sunset"
+    t.integer "widgets_id"
+  end
+
   create_table "widgets", force: :cascade do |t|
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean "weather_widget", default: false
+    t.integer "weather_widget_id"
+    t.boolean "pet_widget", default: false
+    t.integer "pet_widget_id"
+    t.boolean "task_widget", default: false
+    t.integer "task_widget_id"
+    t.boolean "grocery_widget", default: false
+    t.integer "grocery_widget_id"
+    t.boolean "network_widget", default: false
+    t.integer "network_widget_id"
+    t.boolean "ring_widget", default: false
+    t.integer "ring_widget_id"
+    t.boolean "hue_widget", default: false
+    t.integer "hue_widget_id"
+    t.integer "home_id"
+    t.integer "user_id"
   end
 
 end

@@ -15,8 +15,8 @@ class CreateWidgets < ActiveRecord::Migration[5.1]
       t.integer :ring_widget_id
       t.boolean :hue_widget, default: false
       t.integer :hue_widget_id
-      t.home_id
-      t.user_id
+      t.integer :home_id
+      t.integer :user_id
     end
   end
 end

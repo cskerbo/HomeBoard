@@ -4,17 +4,18 @@ class HomesController < ApplicationController
   def new
     @user = current_user
     @home = Home.new
+    @widget = Widget.new
     @states = helpers.state_list
   end
 
   def create
     @user = current_user
     @states = helpers.state_list
+    @widget = Widget.new
     @home = Home.create(home_params)
     @home.user_id = @user.id
     if @home.save
       helpers.address(@home.id)
-      helpers.weather(@home.id)
       helpers.timezone(@home.id)
       redirect_to user_home_path(current_user, @home)
     else
@@ -40,6 +41,7 @@ class HomesController < ApplicationController
     @home = Home.find(params[:id])
     @user = current_user
     @states = helpers.state_list
+    @widget = Widget.new
   end
 
 

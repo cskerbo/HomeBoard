@@ -1,14 +1,12 @@
 class WeatherWidget < ApplicationRecord
-  belongs_to :home
+  belongs_to :widget
   NON_VALIDATABLE_ATTRS = ["id", "created_at", "updated_at"] #or any other attribute that does not need validation
   VALIDATABLE_ATTRS = WeatherWidget.attribute_names.reject{|attr| NON_VALIDATABLE_ATTRS.include?(attr)}
 
   validates_presence_of VALIDATABLE_ATTRS
 
-  def create(home_id, user_id)
-    @weather_widget = WeatherWidget.new
-    @home = Home.find(home_id)
-    @user = User.find(user_id)
+  def create(arg)
+    @weather_widget.widgets_id = arg
     path = "https://api.openweathermap.org/data/2.5/weather?zip=" + "#{@home.zip_code}" + ",us&units=imperial&appid=0015579483ea0225b3814537df74bf36"
     uri = URI.parse(path)
     response = Net::HTTP.get(uri)
@@ -23,9 +21,11 @@ class WeatherWidget < ApplicationRecord
     @weather_widget.temp_max = weather['main']['temp_max']
     @weather_widget.sunrise = weather['sys']['sunrise']
     @weather_widget.sunset = weather['sys']['sunset']
-    @weather_widget.home_id = @home.id
-    @weather_widget.user_id = @user.id
     @weather_widget.save
+  end
+
+  def weather_widget_params
+    params.require(:widget).permit(:home_id)
   end
 
 end
