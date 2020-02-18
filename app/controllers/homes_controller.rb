@@ -18,7 +18,7 @@ class HomesController < ApplicationController
       helpers.timezone(@home.id)
       redirect_to user_home_path(current_user, @home)
     else
-      render 'new'
+      render 'index'
     end
   end
 
@@ -38,6 +38,7 @@ class HomesController < ApplicationController
 
   def edit
     @home = Home.find(params[:id])
+    @user = current_user
     @states = helpers.state_list
   end
 

@@ -1,13 +1,13 @@
 <%= form_for @home do |f| %>
     <% if @home.errors.any? %>
       <div id="error_explanation">
-        <h2>
+        <h4 class="text-danger">
           <%= pluralize(@home.errors.count, "error") %> prohibited this home from being saved:
-        </h2>
+        </h4>
 
         <ul>
           <% @home.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+            <li class="text-danger font-weight-bold"><%= message %></li>
           <% end %>
         </ul>
       </div>
