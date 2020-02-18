@@ -1,9 +1,9 @@
-<%= form_for [@home, @widget] do |f| %>
+<%= form_for [@user, @home, @widget] do |f| %>
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
         <%= f.label :weather_widget, "Weather Widget", class: "bmd-label-floating" %>
-        <%= f.check_box :weather_widget, class: "form-control", :required => true %>
+        <%= f.check_box :weather_widget, class: "form-control", :required => true, value: 'true' %>
       </div>
     </div>
   </div>

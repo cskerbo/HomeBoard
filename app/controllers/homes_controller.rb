@@ -11,13 +11,12 @@ class HomesController < ApplicationController
   def create
     @user = current_user
     @states = helpers.state_list
-    @widget = Widget.new
     @home = Home.create(home_params)
     @home.user_id = @user.id
     if @home.save
       helpers.address(@home.id)
       helpers.timezone(@home.id)
-      redirect_to user_home_path(current_user, @home)
+      redirect_to user_home_widgets_path(current_user, @home)
     else
       render 'index'
     end
