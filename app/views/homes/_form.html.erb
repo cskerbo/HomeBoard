@@ -25,6 +25,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
+          <%= f.hidden_field :user_id, value: "#{@user.id}"  %>
           <%= f.label :name, "Home Name", class: "bmd-label-floating" %>
           <%= f.text_field :name, class: "form-control", :required => true %>
         </div>
@@ -67,7 +68,17 @@
             <div class="col-md-4">
               <div class="form-group">
                 <%= f.label :weather_widget, "Weather Widget", class: "bmd-label" %><br>
+                <%= f.hidden_field :weather_widget, value: "false"  %>
                 <%= f.check_box :weather_widget, {class: "form-control"}, true, false %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <%= f.label :pet_widget, "Pets Widget", class: "bmd-label" %><br>
+                <%= f.hidden_field :pet_widget, value: "false"  %>
+                <%= f.check_box :pet_widget, {class: "form-control"}, true, false %>
               </div>
             </div>
           </div>

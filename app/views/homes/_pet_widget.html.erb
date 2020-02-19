@@ -5,14 +5,48 @@
         <i class="material-icons">pets</i>
       </div>
       <h3 class="card-title">Pet Status</h3><br>
-      <button class="btn btn-primary btn-block" id="pet-button" onclick="updateFeedingStatus('pet-feeding'); updateButtonStatus('pet-button');">Log Feeding</button>
-      <p class="card-category" id="pet-feeding"></p>
-      <p class="card-category">Last switched at: <bold>1:00pm</bold></p>
+      <div class="row">
+        <div class="col-md-12">
+          <%= form_for [@user, @home] do |f| %>
+            <%= f.fields_for :pet do |pet| %>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= pet.label :feeding, "Last Fed:", class: "float-left" %>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="card-category text-success font-weight-bold"><%= @pet.feeding %></p>
+                    <%= pet.hidden_field :feeding, class: "form-control", value: Time.now %>
+                  </div>
+                </div>
+              </div>
+              <%= f.submit "Update Fed Status", class: "btn btn-primary pull-right" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-12">
+          <%= form_for [@user, @home] do |f| %>
+            <%= f.fields_for :pet do |pet| %>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= pet.label :bathroom_break, "Last Let Outside:", class: "float-left" %>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="card-category text-success font-weight-bold"><%= @pet.bathroom_break %></p>
+                    <%= pet.hidden_field :bathroom_break, class: "form-control", value: Time.now %>
+                  </div>
+                </div>
+              </div>
+              <%= f.submit "Update Outside Status", class: "btn btn-primary pull-right" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="card-footer">
-      <div class="stats">
-        <i class="material-icons">watch_later</i> Last updated:
-      </div>
     </div>
   </div>
 </div>
+
+

@@ -1,4 +1,3 @@
-
 <div class="content">
   <div class="container-fluid">
     <div class="row">
@@ -19,8 +18,12 @@
           </div>
         </div>
       </div>
-      <%= render 'weather_widget' %>
-      <%= render 'pet_widget' %>
+      <% if @home.weather_widget? %>
+        <%= render 'weather_widget' %>
+      <% end %>
+      <% if @home.pet_widget? %>
+        <%= render 'pet_widget' %>
+      <% end %>
       <%= render 'network_widget' %>
     <div class="row">
       <%= render 'tasks_widget' %>
@@ -37,18 +40,14 @@
     });
     function updateFeedingStatus(id) {
         var x = document.getElementById(id);
-        if (x.innerHTML === "") {
-            x.innerHTML = new Date;
-        } else {
-            x.innerHTML = "";
-        }
+            x.innerHTML = new Date().getTime();
     }
     function updateButtonStatus(id) {
         var x = document.getElementById(id);
-        if (x.innerHTML != "Reset Status") {
-            x.innerHTML = 'Reset Status';
+        if (x.innerHTML != "Log Feeding") {
+            x.innerHTML = 'Update Fed Time';
         } else {
-            x.innerHTML = "Log A Feeding";
+            x.innerHTML = "Update Fed Time";
         }
     }
 </script>
