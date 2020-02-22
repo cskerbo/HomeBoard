@@ -11,19 +11,19 @@
               <th>ID</th>
               <th>Name</th>
               <th>Address</th>
-              <th>City</th>
-              <th>Widgets</th>
-              <th>Guests</th>
+              <th>List Settings</th>
+              <th>Home Settings</th>
+              <th></th>
             </thead>
             <tbody>
             <% @user.homes.each do |home| %>
               <tr>
-                <td><%= link_to home.id, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
-                <td><%= link_to home.name, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
-                <td><%= link_to home.address, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
-                <td><%= link_to home.city, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
-                <td>Placeholder</td>
-                <td>Placeholder</td>
+                <td><%= home.id %></td>
+                <td><%= home.name %></td>
+                <td><%= home.address %></td>
+                <td><%= link_to "View/Edit Lists", user_home_lists_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
+                <td><%= link_to "View/Edit Home", edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
+                <td><%= link_to "Go to Dashboard", user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
               </tr>
               <%end %>
             </tbody>

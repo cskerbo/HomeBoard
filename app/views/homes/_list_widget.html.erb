@@ -11,10 +11,15 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="form-group">
-    <%= form_for([@user, @home, list, @item]) do |f| %>
-      <%= f.text_field :description, :class => "form-control text-center", :placeholder => (@item.errors.full_messages_for(:description).first || "Enter a new item...") %>
-      <%= f.submit :style => "display: none" %>
-    <% end %>
+          <% if list.items.count == 0 %>
+            <h4 class="text-center"><%= 'This is a default list created for you, to edit the name of the list' %>
+            <%= link_to "click here" + '.', edit_user_home_list_path(current_user, @home, list), data: { turbolinks: 'false' } %>
+            </h4>
+          <% end %>
+        <%= form_for([@user, @home, list, @item]) do |f| %>
+          <%= f.text_field :description, :class => "form-control text-center", :placeholder => (@item.errors.full_messages_for(:description).first || "Enter a new item...") %>
+          <%= f.submit :style => "display: none" %>
+        <% end %>
         </div>
       </div>
     </div>
@@ -34,7 +39,9 @@
                   </label>
                 </div>
               </td>
-              <td><%= item.description %></td>
+              <td>
+                <%= item.description %>
+              </td>
               <td class="td-actions text-right">
                 <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
                   <i class="material-icons">edit</i>
@@ -50,6 +57,6 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 </div>
 <% end %>

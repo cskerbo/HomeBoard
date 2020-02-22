@@ -13,10 +13,10 @@ class HomesController < ApplicationController
     @states = helpers.state_list
     @home = Home.create(home_params)
     @home.build_pet
-    @home.lists.build
     if @home.save
       helpers.address(@home.id)
       helpers.timezone(@home.id)
+      helpers.create_list_widget(@home.id)
       helpers.create_weather_widget(@home.id) if @home.weather_widget?
       redirect_to user_home_path(current_user, @home)
     else
