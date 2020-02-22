@@ -18,10 +18,10 @@
             <tbody>
             <% @user.homes.each do |home| %>
               <tr>
-                <td><%= home.id %></td>
-                <td><%= home.name %></td>
-                <td><%= home.address %></td>
-                <td><%= home.city %></td>
+                <td><%= link_to home.id, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
+                <td><%= link_to home.name, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
+                <td><%= link_to home.address, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
+                <td><%= link_to home.city, edit_user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
                 <td>Placeholder</td>
                 <td>Placeholder</td>
               </tr>

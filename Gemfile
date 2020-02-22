@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'http'
 # List of US states for User address and location services
 gem 'carmen'
 # Set time zone for users

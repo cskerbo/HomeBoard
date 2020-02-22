@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200219173830) do
+ActiveRecord::Schema.define(version: 20200221174303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,9 +28,21 @@ ActiveRecord::Schema.define(version: 20200219173830) do
     t.boolean "weather_widget", default: false
     t.integer "weather_widget_id"
     t.boolean "pet_widget", default: false
+    t.boolean "list_widget", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "description"
+    t.integer "status"
+    t.integer "list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "home_id"
   end
 
   create_table "pets", force: :cascade do |t|

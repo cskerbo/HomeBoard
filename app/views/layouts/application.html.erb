@@ -24,24 +24,22 @@
         HomeBoard
       </a></div>
       <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item ">
-            <a class="nav-link" data-turbolinks="false" href="./dashboard.html">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
+        <ul class="nav nav-pills">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:;" role="button" aria-haspopup="true" aria-expanded="false"> <i class="material-icons">dashboard</i>Dashboards</a>
+            <div class="dropdown-menu">
+                  <% @user = User.find(current_user.id) %>
+                  <% @user.homes.each do |home| %>
+                    <a class="dropdown-item" data-turbolinks="false" href="/users/<%= current_user.id %>/homes/<%= home.id %>"><%= home.name %></a>
+                  <% end %>
+                </div>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" data-turbolinks="false" href="/homes">
-              <i class="material-icons">home</i>
-              <p>Home Manager</p>
-            </a>
+          <li class="nav-item">
+            <a class="nav-link" data-turbolinks="false" href="/users/<%= current_user.id %>/homes/">Home Management</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
+          <li class="nav-item">
+            <a class="nav-link" data-turbolinks="false" href="/users/edit">User Profile</a>
           </li>
         </ul>
       </div>

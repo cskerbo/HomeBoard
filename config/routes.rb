@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   end
   resources :users do
     resources :homes do
+      resources :lists do
+        resources :items
+      end
     end
+  end
+  resources :lists do
+    resources :items
   end
   resources :static
   root 'static#index'

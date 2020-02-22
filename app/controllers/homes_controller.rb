@@ -5,6 +5,7 @@ class HomesController < ApplicationController
     @user = current_user
     @home = Home.new
     @states = helpers.state_list
+
   end
 
   def create
@@ -12,6 +13,7 @@ class HomesController < ApplicationController
     @states = helpers.state_list
     @home = Home.create(home_params)
     @home.build_pet
+    @home.lists.build
     if @home.save
       helpers.address(@home.id)
       helpers.timezone(@home.id)
@@ -28,6 +30,8 @@ class HomesController < ApplicationController
     helpers.update_weather_widget(@home.weather_widget_id) if @home.weather_widget?
     @weather_widget = WeatherWidget.find(@home.weather_widget_id) if @home.weather_widget?
     @pet = Pet.find_by_home_id(@home.id)
+    @lists = List.where(home_id: @home.id)
+    @item = Item.new
     if @home.user_id != current_user.id || @user.id != current_user.id
       redirect_to '/403'
     end
@@ -55,7 +59,10 @@ class HomesController < ApplicationController
   private
 
   def home_params
-    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :user_id,
+    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :list_widget, :user_id,
+                                 lists_attributes: [
+                                     :name
+                                 ],
                                  pet_attributes: [
                                      :feeding,
                                      :id,

@@ -1,6 +1,7 @@
 <div class="content">
   <div class="container-fluid">
     <% if @user.homes.count != 0 %>
+      <h3>Select an existing home to view further details, edit information, or change widget settings.</h3>
       <%= render 'existing_homes' %>
     <% else %>
       <h3><%= 'Welcome to HomeBoard!' %></h3>
