@@ -10,12 +10,16 @@
             <thead class=" text-primary">
             <th>ID</th>
             <th>Name</th>
+            <th>Item Count</th>
+            <th>Color</th>
             </thead>
             <tbody>
             <% @home.lists.each do |list| %>
               <tr>
                 <td><%= link_to list.id, user_home_list_path(current_user, @home.id, list.id), data: { turbolinks: 'false' } %></td>
                 <td><%= link_to list.name, user_home_list_path(current_user, @home.id, list.id), data: { turbolinks: 'false' } %></td>
+                <td><%= list.items.count %></td>
+                <td>Placeholder</td>
               </tr>
             <%end %>
             </tbody>
