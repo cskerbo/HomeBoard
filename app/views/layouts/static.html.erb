@@ -127,7 +127,7 @@
   </style>
 </head>
 
-<body>
+<body data-turbolinks="false">
 
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="">
@@ -135,8 +135,8 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto flex-nowrap">
         <li class="nav-item">
           <a class="nav-link" href=<%= new_user_registration_path %>><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
         </li>

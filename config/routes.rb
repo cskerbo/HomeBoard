@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :homes
   resources :lists do
     resources :items
   end

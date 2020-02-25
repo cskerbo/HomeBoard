@@ -1,17 +1,13 @@
 <div class="content">
   <div class="container-fluid">
-    <% if @user.homes.count != 0 %>
-      <h3>Select an existing home to view further details, edit information, or change widget settings.</h3>
-      <%= render 'existing_homes' %>
-    <% else %>
+    <% if @user.homes.count == 0 %>
       <h3><%= 'Welcome to HomeBoard!' %></h3>
       <p><%= 'Get starting by creating your first home. Once you create a home, you will have access to a custom dashboard for your house.' %></p>
-    <%end %>
-    <% if @user.homes.count < 1 %>
-      <p class="card-category"><%= "First, lets's get some details about your house." %></p>
-    <% else %>
+  <% else %>
+
       <p class="card-category"><%= "Enjoying HomeBoard? Great!" %><br><%= "If you have a need for additional dashboards you're in luck - you can create as many HomeBoards as you need." %></p>
-    <% end %>
-    <%= render 'form' %>
-  </div>
+    <%end %>
+
+      <%= render 'existing_homes' %>
+      </div>
 </div>

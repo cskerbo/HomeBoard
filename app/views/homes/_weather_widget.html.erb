@@ -1,12 +1,18 @@
-<div class="col-lg-3 col-md-6 col-sm-6">
+<div class="col-lg-4 col-md-6 col-sm-6">
   <div class="card card-stats">
     <div class="card-header card-header-success card-header-icon">
       <div class="card-icon">
-        <i class="material-icons">filter_drama</i>
+        <img class="d-md-block mx-auto" src="http://openweathermap.org/img/wn/<%= @weather_widget.weather_icon %>.png" alt="">
       </div>
       <h3 class="card-title"><%= @home.city %> Weather</h3>
-      <div class="col-sm-12">
-        <img class="mb-4 d-none d-md-block mx-auto my-auto" src="http://openweathermap.org/img/wn/<%= @weather_widget.weather_icon %>.png" alt="">
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="card-category">Current Status:</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="card-category" style="text-align: center"><%= @weather_widget.weather_description.titleize %></p>
+        </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
@@ -29,7 +35,7 @@
           <p class="card-category">Sunrise:</p>
         </div>
         <div class="col-sm-6">
-          <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunrise).strftime("%I:%M%P") %></p>
+          <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunrise).strftime("%I:%M %P") %></p>
         </div>
       </div>
       <div class="row">
@@ -37,7 +43,7 @@
           <p class="card-category" >Sunset:</p>
         </div>
         <div class="col-sm-6">
-          <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunset).strftime("%I:%M%P") %></p>
+          <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunset).strftime("%I:%M %P") %></p>
         </div>
       </div>
     </div>

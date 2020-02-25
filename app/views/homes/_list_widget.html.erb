@@ -4,16 +4,21 @@
     <div class="card-header card-header-tabs card-header-primary">
       <div class="nav-tabs-navigation">
         <div class="nav-tabs-wrapper">
-          <span class="nav-tabs-title"><%= list.name %></span>
+          <span class="nav-tabs-title"><%= list.name %>
+            <% if list.name == "" %>
+               <% name = "Default List"  %>
+              <%= name %>
+              <%end %>
+          </span>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="form-group">
-          <% if list.items.count == 0 %>
-            <h4 class="text-center"><%= 'This is a default list created for you, to edit the name of the list' %>
-            <%= link_to "click here" + '.', edit_user_home_list_path(current_user, @home, list), data: { turbolinks: 'false' } %>
+          <% if list.name == "" %>
+            <h4 class="text-center"><%= 'This is a default list created for you, you should' %>
+            <%= link_to "change the name" + '.', edit_user_home_list_path(current_user, @home, list), data: { turbolinks: 'false' } %>
             </h4>
           <% end %>
         <%= form_for([@user, @home, list, @item]) do |f| %>
@@ -26,37 +31,25 @@
     <div class="card-body">
       <div class="tab-content">
         <div class="tab-pane active" id="LISTNAME">
-          <table class="table">
-            <tbody>
-            <% list.items.each do |item| %>
-            <tr>
-              <td>
-                <div class="form-check">
-                  <label class="form-check-label">
+          <section class="main">
+            <ul class="todo-list">
+              <% list.items.each do |item| %>
+                <li class="<%= "completed" if item.complete? %>">
+                  <div class="view">
                     <%= form_for([list, item]) do |f| %>
                       <%= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
                     <% end %>
-                  </label>
-                </div>
-              </td>
-              <td>
-                <%= item.description %>
-              </td>
-              <td class="td-actions text-right">
-                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                  <i class="material-icons">edit</i>
-                </button>
-                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                  <i class="material-icons">close</i>
-                </button>
-              </td>
-            </tr>
-            <% end %>
-            </tbody>
-          </table>
+
+                    <label><%= item.description %></label>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 <% end %>

@@ -14,8 +14,9 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-
-    redirect_to list_path(@item.list)
+    list = List.find(@item.list_id)
+    @home = Home.find(list.home_id)
+    redirect_to user_home_path(current_user, @home.id)
   end
 
   private

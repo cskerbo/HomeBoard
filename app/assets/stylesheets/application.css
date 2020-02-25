@@ -12,7 +12,6 @@
  *
  *= require font-awesome
 *= require material/material-dashboard.css
-*= require material/demo.css
  *= require_tree .
  *= require_self
  */
@@ -78,3 +77,196 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.card{
+    background-color: rgba(0,0,0,0.6) !important;
+    color: white;
+}
+
+.card-stats .card-header.card-header-icon img {
+    font-size: 36px;
+    line-height: 56px;
+    width: 56px;
+    height: 56px;
+    text-align: center;
+}
+.card .card-header.card-header-icon .card-title {
+    color: white;
+}
+
+.card-stats .card-header .card-category:not([class*=text-]) {
+    color: white;
+}
+
+.form-check, label {
+    color: white;
+}
+
+.card .card-body+.card-footer .stats, .card .card-footer .stats {
+    color: white;
+}
+
+
+.form-control {
+    color: white;
+}
+
+a {
+    color: yellow;
+}
+
+tr {
+    color: white;
+}
+
+
+
+input::-webkit-input-placeholder {
+    font-style: italic;
+    font-weight: 300;
+    color: #e6e6e6;
+}
+
+input::-moz-placeholder {
+    font-style: italic;
+    font-weight: 300;
+    color: #e6e6e6;
+}
+
+input::input-placeholder {
+    font-style: italic;
+    font-weight: 300;
+    color: #e6e6e6;
+}
+
+
+label[for='toggle-all'] {
+    display: none;
+}
+
+.toggle-all {
+    position: absolute;
+    top: -55px;
+    left: -12px;
+    width: 60px;
+    height: 34px;
+    text-align: center;
+    border: none; /* Mobile Safari */
+}
+
+.toggle-all:before {
+    content: '❯';
+    font-size: 22px;
+    color: #e6e6e6;
+    padding: 10px 27px 10px 27px;
+}
+
+.toggle-all:checked:before {
+    color: #737373;
+}
+
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.todo-list li {
+    position: relative;
+    font-size: 24px;
+    border-bottom: 1px solid #857a1f;
+}
+
+.todo-list li:last-child {
+    border-bottom: none;
+}
+
+
+
+.todo-list li .toggle {
+    text-align: center;
+    width: 40px;
+    /* auto, since non-WebKit browsers doesn't support input styling */
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    border: none; /* Mobile Safari */
+    appearance: none;
+}
+
+
+
+.todo-list li label {
+    white-space: pre-line;
+    word-break: break-all;
+    padding: 15px 60px 15px 15px;
+    margin-left: 45px;
+    display: block;
+    line-height: 1.2;
+    transition: color 0.4s;
+}
+
+.todo-list li.completed label {
+    color: #d9d9d9;
+    text-decoration: line-through;
+}
+
+.todo-list li .destroy {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    font-size: 30px;
+    color: #cc9a9a;
+    margin-bottom: 11px;
+    transition: color 0.2s ease-out;
+}
+
+.todo-list li .destroy:hover {
+    color: #af5b5e;
+}
+
+.todo-list li .destroy:after {
+    content: '×';
+}
+
+.todo-list li:hover .destroy {
+    display: block;
+}
+
+.todo-list li .edit {
+    display: none;
+}
+
+.todo-list li.editing:last-child {
+    margin-bottom: -1px;
+}
+
+
+.clear-completed,
+html .clear-completed:active {
+    float: right;
+    position: relative;
+    line-height: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.clear-completed:hover {
+    text-decoration: underline;
+}
+
+
+
+/*
+	Hack to remove background from Mobile Safari.
+	Can't use it globally since it destroys checkboxes in Firefox
+*/
+

@@ -45,6 +45,13 @@ class ListsController < ApplicationController
       render :index
     end
   end
+
+  def destroy
+    list = List.find(params[:id])
+    home_id = list.home_id
+    list.destroy
+    redirect_to user_home_lists_path(current_user, home_id)
+  end
   private
 
   def list_params # strong parameters

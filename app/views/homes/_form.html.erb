@@ -1,9 +1,4 @@
-<div class="row">
-  <div class="col-md-8">
-    <div class="card">
-      <div class="card-header card-header-primary">
-        <h3 class="card-title">Create a new Home</h3>
-      </div>
+
       <div class="card-body">
 
 
@@ -59,7 +54,7 @@
     <div class="col-md-4">
       <div class="form-group">
         <%= f.label :state, "State", class: "bmd-label" %><br>
-        <%= f.select :state, options_for_select(@states), {}, {class: "form-control", required: true, placeholder: "Select State"} %>
+        <%= f.select :state, options_for_select(@states, @home.state), {}, {class: "form-control",  required: true, placeholder: "Select State"} %>
       </div>
     </div>
   </div>
@@ -95,6 +90,4 @@
   <div class="clearfix"></div>
 <% end %>
       </div>
-    </div>
-  </div>
-</div>
+

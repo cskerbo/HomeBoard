@@ -8,24 +8,32 @@
         <div class="table-responsive">
           <table class="table">
             <thead class=" text-primary">
-            <th>ID</th>
             <th>Name</th>
             <th>Item Count</th>
             <th>Color</th>
+            <th></th>
+            <th></th>
+            <th></th>
             </thead>
             <tbody>
             <% @home.lists.each do |list| %>
               <tr>
-                <td><%= link_to list.id, user_home_list_path(current_user, @home.id, list.id), data: { turbolinks: 'false' } %></td>
                 <td><%= link_to list.name, user_home_list_path(current_user, @home.id, list.id), data: { turbolinks: 'false' } %></td>
                 <td><%= list.items.count %></td>
-                <td>Placeholder</td>
+                <td></td>
+                <td><%= button_to "Rename", edit_user_home_list_path(current_user, @home.id, list.id), method: :get %></td>
+                <td><%= button_to "View/Edit", user_home_list_path(current_user, @home.id, list.id), method: :get %></td>
+                <td><%= button_to "Delete", list, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }%></td>
               </tr>
-            <%end %>
+            <% end %>
             </tbody>
           </table>
         </div>
+      </div><br><br>
+      <div class="card-header card-header-success">
+        <h3 class="card-title">Create New List</h3>
       </div>
+      <%= render 'form' %>
     </div>
   </div>
 </div>

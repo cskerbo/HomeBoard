@@ -56,6 +56,12 @@ class HomesController < ApplicationController
     redirect_to user_home_path(current_user, @home)
   end
 
+  def destroy
+    @home = Home.find(params[:id])
+    @home.destroy
+      redirect_to user_homes_path(current_user)
+  end
+
   private
 
   def home_params
