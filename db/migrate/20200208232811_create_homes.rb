@@ -14,6 +14,7 @@ class CreateHomes < ActiveRecord::Migration[5.1]
       t.integer :weather_widget_id
       t.boolean :pet_widget, default: false
       t.boolean :list_widget, default: false
+      t.boolean :hue_widget, default: true
 
       t.timestamps
     end

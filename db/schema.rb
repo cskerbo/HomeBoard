@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200221174303) do
+ActiveRecord::Schema.define(version: 20200227003716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bridges", force: :cascade do |t|
+    t.string "internalip"
+    t.string "identifier"
+    t.integer "hue_widget_id"
+  end
+
+  create_table "bulbs", force: :cascade do |t|
+    t.integer "bridge_id"
+  end
 
   create_table "homes", force: :cascade do |t|
     t.string "name"
@@ -29,9 +39,15 @@ ActiveRecord::Schema.define(version: 20200221174303) do
     t.integer "weather_widget_id"
     t.boolean "pet_widget", default: false
     t.boolean "list_widget", default: false
+    t.boolean "hue_widget", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "hue_widgets", force: :cascade do |t|
+    t.integer "home_id"
+    t.string "username"
   end
 
   create_table "items", force: :cascade do |t|

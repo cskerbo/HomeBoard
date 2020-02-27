@@ -18,6 +18,7 @@ class HomesController < ApplicationController
       helpers.timezone(@home.id)
       helpers.create_list_widget(@home.id)
       helpers.create_weather_widget(@home.id) if @home.weather_widget?
+      helpers.create_hue_widget(@home.id) if @home.hue_widget?
       redirect_to user_home_path(current_user, @home)
     else
       render 'index'
@@ -65,7 +66,7 @@ class HomesController < ApplicationController
   private
 
   def home_params
-    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :list_widget, :user_id,
+    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :hue_widget, :list_widget, :user_id,
                                  lists_attributes: [
                                      :name
                                  ],
