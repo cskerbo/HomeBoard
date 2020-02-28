@@ -8,7 +8,7 @@ module WeatherWidgetsHelper
     @weather_widget.save!
     @home.weather_widget_id = @weather_widget.id
     @home.save
-  end
+end
 
   def generate_weather_data(zip_code)
     weather_data = Hash.new

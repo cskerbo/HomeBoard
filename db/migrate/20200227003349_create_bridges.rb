@@ -3,7 +3,8 @@ class CreateBridges < ActiveRecord::Migration[5.1]
     create_table :bridges do |t|
       t.string :internalip
       t.string :identifier
-      t.integer :hue_widget_id
+      t.string :username
+      t.integer :home_id
     end
   end
 end

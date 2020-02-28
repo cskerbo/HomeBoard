@@ -3,7 +3,7 @@ class Home < ApplicationRecord
   has_one :pet
   has_many :lists
   has_many :items, through: :lists
-  has_many :hue_widgets
+  has_many :bridges
   accepts_nested_attributes_for :pet
   accepts_nested_attributes_for :lists
   validates_format_of :zip_code,

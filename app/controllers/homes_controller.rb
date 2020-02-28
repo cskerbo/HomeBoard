@@ -18,7 +18,7 @@ class HomesController < ApplicationController
       helpers.timezone(@home.id)
       helpers.create_list_widget(@home.id)
       helpers.create_weather_widget(@home.id) if @home.weather_widget?
-      helpers.create_hue_widget(@home.id) if @home.hue_widget?
+      helpers.create_bridges(@home.id) if @home.hue_widget?
       redirect_to user_home_path(current_user, @home)
     else
       render 'index'
@@ -33,6 +33,7 @@ class HomesController < ApplicationController
     @pet = Pet.find_by_home_id(@home.id)
     @lists = List.where(home_id: @home.id)
     @item = Item.new
+    @bridges = Bridge.where(home_id: @home.id)
     if @home.user_id != current_user.id || @user.id != current_user.id
       redirect_to '/403'
     end

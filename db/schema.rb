@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20200227003716) do
   create_table "bridges", force: :cascade do |t|
     t.string "internalip"
     t.string "identifier"
-    t.integer "hue_widget_id"
+    t.string "username"
+    t.integer "home_id"
   end
 
   create_table "bulbs", force: :cascade do |t|
@@ -39,15 +40,10 @@ ActiveRecord::Schema.define(version: 20200227003716) do
     t.integer "weather_widget_id"
     t.boolean "pet_widget", default: false
     t.boolean "list_widget", default: false
-    t.boolean "hue_widget", default: true
+    t.boolean "hue_widget", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-  end
-
-  create_table "hue_widgets", force: :cascade do |t|
-    t.integer "home_id"
-    t.string "username"
   end
 
   create_table "items", force: :cascade do |t|

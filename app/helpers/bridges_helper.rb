@@ -1,12 +1,13 @@
 module BridgesHelper
 
   def create_bridges(id)
-    @hue_widget = HueWidget.find(id)
-    bridge_data = find_bridges
-    @bridge = Bridge.create(bridge_data)
-    @bridge.hue_widget_id = @hue_widget.id
-    @bridge.save
+    @bridge = Bridge.create(find_bridges)
+    @bridge.home_id = id
+    @bridge.save!
   end
+
+
+  private
 
   def find_bridges
     bridge_data = Hash.new
@@ -24,6 +25,18 @@ module BridgesHelper
     else
       raise "Unknown error"
     end
+  end
+
+  def register_hue_user
+    data = { "devicetype"=>"lights" }
+    response = @http.post "/api", data.to_json
+    result = JSON.parse(response.body).first
+    if result.has_key? "error"
+      process_error result
+    elsif result["success"]
+      @username = result["success"]["username"]
+    end
+    result
   end
 
 end

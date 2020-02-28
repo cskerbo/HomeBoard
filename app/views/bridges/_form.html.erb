@@ -1,0 +1,33 @@
+<div class="card-body">
+  <%= form_for [@home, @bridge] do |b| %>
+    <% if @bridge.username == nil %>
+      <h3>We found a Hue Bridge on your network, but you need to press the button on top of your Hue Bridge before proceeding.</h3>
+      <h4>Once you press the button click the "Connect" button below. <i>Pressing the button will provide you with 30 seconds to connect.</i></h4><br>
+      <% end %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= b.hidden_field :home_id, value: "#{@home.id}"  %>
+          <%= b.label :internalip, "IP Address", class: "bmd-label-floating" %>
+          <%= b.text_field :internalip, class: "form-control", disabled: true %>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= b.hidden_field :home_id, value: "#{@home.id}"  %>
+          <%= b.label :identifier, "Identifier", class: "bmd-label-floating" %>
+          <%= b.text_field :identifier, class: "form-control", disabled: true %>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= b.hidden_field :home_id, value: "#{@home.id}"  %>
+          <%= b.label :username, "Username", class: "bmd-label-floating" %>
+          <%= b.text_field :username, class: "form-control", placeholder: "This will populate once we have a successful connection.", disabled: true %>
+        </div>
+      </div>
+    </div>
+    <%= b.submit class: "btn btn-primary pull-right" %>
+    <div class="clearfix"></div>
+  <% end %>
+</div>

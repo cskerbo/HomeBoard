@@ -1,0 +1,21 @@
+<% @bridges.each do |b| %>
+<div class="col-lg-6 col-md-12 col-sm-12">
+  <div class="card card-stats">
+    <div class="card-header card-header-info card-header-icon">
+      <div class="card-icon">
+        <i class="material-icons">highlight</i>
+      </div>
+      <h3 class="card-title">Light Control</h3>
+    </div>
+    <% if b.username == nil %>
+      <h4 class="text-center"><%= link_to "Click here", edit_home_bridge_path(@home, b.id) %> to connect HomeBoard to your Hue Bridge and gain access to light controls! </h4>
+      <% else %>
+    <p><%= b.identifier %></p>
+    <p><%= b.internalip %></p>
+      <% end %>
+    <div class="card-footer">
+
+    </div>
+  </div>
+</div>
+<% end %>
