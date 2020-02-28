@@ -1,33 +1,32 @@
+<% @bridges.each do |b| %>
 <div class="card-body">
-  <%= form_for [@home, @bridge] do |b| %>
-    <% if @bridge.username == nil %>
-      <h3>We found a Hue Bridge on your network, but you need to press the button on top of your Hue Bridge before proceeding.</h3>
-      <h4>Once you press the button click the "Connect" button below. <i>Pressing the button will provide you with 30 seconds to connect.</i></h4><br>
+  <%= form_for [@home, b] do |bridge| %>
+    <% if b.username == nil %>
+      <h3>We found <%= @bridges.count %> Hue Bridge on your network. You will need to allow HomeBoard to connect to your Hue Bridge to complete setup.</h3>
+      <ol>
+        <li>Go to your Hue Bridge and press the circular button on top.</li>
+        <li>This page will update automatically once the button is pressed.</li>
+      </ol>
       <% end %>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <%= b.hidden_field :home_id, value: "#{@home.id}"  %>
-          <%= b.label :internalip, "IP Address", class: "bmd-label-floating" %>
-          <%= b.text_field :internalip, class: "form-control", disabled: true %>
+          <%= bridge.hidden_field :home_id, value: "#{@home.id}"  %>
+          <%= bridge.label :internalip, "IP Address", class: "bmd-label-floating" %>
+          <%= bridge.text_field :internalip, class: "form-control", disabled: true %>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
-          <%= b.hidden_field :home_id, value: "#{@home.id}"  %>
-          <%= b.label :identifier, "Identifier", class: "bmd-label-floating" %>
-          <%= b.text_field :identifier, class: "form-control", disabled: true %>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <%= b.hidden_field :home_id, value: "#{@home.id}"  %>
-          <%= b.label :username, "Username", class: "bmd-label-floating" %>
-          <%= b.text_field :username, class: "form-control", placeholder: "This will populate once we have a successful connection.", disabled: true %>
+          <%= bridge.hidden_field :home_id, value: "#{@home.id}"  %>
+          <%= bridge.label :identifier, "Identifier", class: "bmd-label-floating" %>
+          <%= bridge.text_field :identifier, class: "form-control", disabled: true %>
         </div>
       </div>
     </div>
-    <%= b.submit class: "btn btn-primary pull-right" %>
+    <h4 class="text-danger"><%= flash[:error] %></h4>
+    <%= bridge.submit "Connect", class: "btn btn-primary pull-right" %>
     <div class="clearfix"></div>
   <% end %>
 </div>
+<% end %>

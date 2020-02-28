@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20200227003716) do
 
   create_table "bulbs", force: :cascade do |t|
     t.integer "bridge_id"
+    t.boolean "on"
+    t.integer "brightness"
+    t.integer "hue"
+    t.integer "saturation"
+    t.float "xy"
+    t.integer "color_temperature"
+    t.string "color_mode"
+    t.string "effect"
   end
 
   create_table "homes", force: :cascade do |t|
