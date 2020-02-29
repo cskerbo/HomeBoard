@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20200227003716) do
     t.integer "brightness"
     t.integer "hue"
     t.integer "saturation"
-    t.float "xy"
     t.integer "color_temperature"
     t.string "color_mode"
     t.string "effect"

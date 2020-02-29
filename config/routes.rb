@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :homes do
     resources :bridges
   end
+  resources :bridges do
+    resources :bulbs
+  end
   resources :static
   root 'static#index'
   get '/logout', to: 'remove#destroy'

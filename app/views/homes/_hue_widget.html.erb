@@ -1,4 +1,4 @@
-<% @bridges.each do |b| %>
+<% @bridges.each do |bridge| %>
 <div class="col-lg-6 col-md-12 col-sm-12">
   <div class="card card-stats">
     <div class="card-header card-header-info card-header-icon">
@@ -7,14 +7,26 @@
       </div>
       <h3 class="card-title">Light Control</h3>
     </div>
-    <% if b.username == nil %>
-      <h4 class="text-center"><%= link_to "Click here", edit_home_bridge_path(@home, b.id) %> to connect HomeBoard to your Hue Bridge and gain access to light controls! </h4>
+    <% if bridge.username == nil %>
+      <h4 class="text-center">Connect  HomeBoard to your Hue Bridge to finish setup. <br><%= link_to "I'm ready, let's do this!", edit_home_bridge_path(@home, b.id) %></h4>
       <% else %>
-    <p><%= b.identifier %></p>
-    <p><%= b.internalip %></p>
+      <div class="col-md-12">
+          <% bridge.bulbs.each do |bulb| %>
+
+              <div class="custom-control custom-switch">
+                <%= form_for [bridge, bulb], remote: true do |f| %>
+
+                        <%= f.hidden_field :on, value: "false"  %>
+                        <%= f.check_box :on, {class: "custom-control-input", id: "customSwitch#{bulb.id}"}, true, false %>
+                  <%= f.label :name, bulb.name, class: "custom-control-label", for: "customSwitch#{bulb.id}" %>
+                        <%= f.submit %>
+              <% end %>
+              </div>
+
+          <% end %>
+      </div>
       <% end %>
     <div class="card-footer">
-
     </div>
   </div>
 </div>

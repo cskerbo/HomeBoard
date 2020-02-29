@@ -3,11 +3,12 @@
   <%= form_for [@home, b] do |bridge| %>
     <% if b.username == nil %>
       <h3>We found <%= @bridges.count %> Hue Bridge on your network. You will need to allow HomeBoard to connect to your Hue Bridge to complete setup.</h3>
-      <ol>
+      <br><ol>
         <li>Go to your Hue Bridge and press the circular button on top.</li>
-        <li>This page will update automatically once the button is pressed.</li>
-      </ol>
+        <li>This page will update automatically once the connection is confirmed.</li>
+      </ol><br>
       <% end %>
+    <h3>Bridge Details</h3>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">

@@ -31,9 +31,9 @@
         <%= render 'list_widget' %>
       <% end %>
     </div>
-    <div class="row">
+    <div class="row" id="link">
       <% if @home.hue_widget? %>
-        <%= render 'hue_widget' %>
+        <%= render :partial => 'homes/hue_widget'%>
       <% end %>
     </div>
   </div>
