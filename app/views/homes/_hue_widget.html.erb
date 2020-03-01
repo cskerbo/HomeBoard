@@ -15,12 +15,16 @@
 
               <div class="custom-control custom-switch">
                 <%= form_for [bridge, bulb], remote: true do |f| %>
-
                         <%= f.hidden_field :on, value: "false"  %>
                         <%= f.check_box :on, {class: "custom-control-input", id: "customSwitch#{bulb.id}"}, true, false %>
                   <%= f.label :name, bulb.name, class: "custom-control-label", for: "customSwitch#{bulb.id}" %>
-                        <%= f.submit %>
+                  <script>
+                      $('input[type=checkbox]').change(function() {
+                          $("#edit_bulb_<%=bulb.id %>").submit();
+                      });
+                  </script>
               <% end %>
+
               </div>
 
           <% end %>
@@ -30,4 +34,5 @@
     </div>
   </div>
 </div>
+
 <% end %>

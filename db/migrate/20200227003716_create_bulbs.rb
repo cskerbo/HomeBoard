@@ -10,6 +10,7 @@ class CreateBulbs < ActiveRecord::Migration[5.1]
       t.integer :color_temperature
       t.string :color_mode
       t.string :effect
+      t.integer :identifier
     end
   end
 end

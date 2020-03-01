@@ -11,8 +11,8 @@ class BulbsController < ApplicationController
     end
   end
 
-
   private
+
   def bulb_params
     params.require(:bulb).permit(:on)
   end

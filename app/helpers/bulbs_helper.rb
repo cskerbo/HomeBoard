@@ -43,4 +43,19 @@ module BulbsHelper
     end
   end
 
+  def refresh_bulb_data(bridge_id)
+    bulb_data = find_bulbs(@bridge.internalip, @bridge.username)
+    bulb_data.each do |bulb|
+      @bulb = Bulb.find_by(identifier: bulb[0])
+      @bulb.update(on: bulb[1]['state']['on'])
+      @bulb.update(brightness: bulb[1]['state']['bri'])
+      @bulb.update(hue: bulb[1]['state']['hue'])
+      @bulb.update(saturation: bulb[1]['state']['sat'])
+      @bulb.update(color_temperature: bulb[1]['state']['ct'])
+      @bulb.update(color_mode: bulb[1]['state']['colormode'])
+      @bulb.update(effect: bulb[1]['state']['effect'])
+      @bulb.update(name: bulb[1]['name'])
+    end
   end
+
+end
