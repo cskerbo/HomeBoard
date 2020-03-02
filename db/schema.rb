@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200227003716) do
+ActiveRecord::Schema.define(version: 20200301083858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20200227003716) do
 
   create_table "bulbs", force: :cascade do |t|
     t.integer "bridge_id"
+    t.string "name"
     t.boolean "on"
     t.integer "brightness"
     t.integer "hue"
@@ -31,6 +32,17 @@ ActiveRecord::Schema.define(version: 20200227003716) do
     t.integer "color_temperature"
     t.string "color_mode"
     t.string "effect"
+    t.integer "identifier"
+    t.integer "group_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.text "lights", default: [], array: true
+    t.string "name"
+    t.string "group_type"
+    t.integer "identifier"
+    t.boolean "state"
+    t.integer "bridge_id"
   end
 
   create_table "homes", force: :cascade do |t|

@@ -11,6 +11,7 @@ class CreateBulbs < ActiveRecord::Migration[5.1]
       t.string :color_mode
       t.string :effect
       t.integer :identifier
+      t.integer :group_id
     end
   end
 end

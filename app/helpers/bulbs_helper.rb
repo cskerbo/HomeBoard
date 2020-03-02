@@ -17,8 +17,8 @@ module BulbsHelper
     uri = URI.parse(path)
     response = Net::HTTP.get(uri)
     result = JSON.parse(response)
-    if result.first.is_a?(Hash) && result.first.has_key?("error")
-      flash[:error] = "error"
+    if result.first.is_a?(Hash) && result.first.has_key?('error')
+      flash[:error] = 'error'
     end
     result
   end
@@ -39,6 +39,8 @@ module BulbsHelper
       @bulb.name = bulb[1]['name']
       @bulb.identifier = bulb[0]
       @bulb.bridge_id = @bridge.id
+      @group = Group.where("'#{@bulb.identifier}' = ANY (lights)")
+      @bulb.group_id = @group.id
       @bulb.save!
     end
   end
