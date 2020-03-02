@@ -25,6 +25,7 @@ module BulbsHelper
 
   # @param [Object] bridge_id
   def create_bulbs(bridge_id)
+    @groups = Group.all
     @bridge = Bridge.find(bridge_id)
     bulb_data = find_bulbs(@bridge.internalip, @bridge.username)
     bulb_data.each do |bulb|
@@ -39,9 +40,12 @@ module BulbsHelper
       @bulb.name = bulb[1]['name']
       @bulb.identifier = bulb[0]
       @bulb.bridge_id = @bridge.id
-      @group = Group.where("'#{@bulb.identifier}' = ANY (lights)")
-      @bulb.group_id = @group.id
-      @bulb.save!
+      @groups.each do |group|
+        if group.lights.include?("#{@bulb.identifier}")
+          @bulb.group_id = group.id
+          @bulb.save!
+        end
+      end
     end
   end
 

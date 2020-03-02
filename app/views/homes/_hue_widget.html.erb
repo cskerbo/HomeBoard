@@ -10,24 +10,38 @@
     <% if bridge.username == nil %>
       <h4 class="text-center">Connect  HomeBoard to your Hue Bridge to finish setup. <br><%= link_to "I'm ready, let's do this!", edit_home_bridge_path(@home, bridge.id) %></h4>
       <% else %>
-      <div class="col-md-12">
-          <% bridge.bulbs.each do |bulb| %>
-
+      <div class="col-md-6"><br>
+        <h4>Rooms</h4>
+        <div class="col-md-12">
+          <% bridge.groups.each do |group| %>
               <div class="custom-control custom-switch">
-                <%= form_for [bridge, bulb], remote: true do |f| %>
-                        <%= f.hidden_field :on, value: "false"  %>
-                        <%= f.check_box :on, {class: "custom-control-input", id: "customSwitch#{bulb.id}"}, true, false %>
-                  <%= f.label :name, bulb.name, class: "custom-control-label", for: "customSwitch#{bulb.id}" %>
+                <%= form_for [bridge, group], remote: true do |f| %>
+                        <%= f.hidden_field :state, value: "false"  %>
+                        <%= f.check_box :state, {class: "custom-control-input", id: "customSwitch#{group.id}"}, true, false %>
+                  <%= f.label :name, group.name, class: "custom-control-label", for: "customSwitch#{group.id}" %>
                   <script>
                       $('input[type=checkbox]').change(function() {
-                          $("#edit_bulb_<%=bulb.id %>").submit();
+                          $("#edit_group_<%=group.id %>").submit();
                       });
                   </script>
               <% end %>
 
+            <% group.scenes.each do |scene| %>
+            <div class="custom-control custom-switch">
+              <%= form_for [group, scene], remote: true do |f| %>
+                <%= f.check_box :name, {class: "custom-control-input", id: "customSwitch#{scene.id}"}, true, false %>
+                <%= f.label :name, scene.name, class: "custom-control-label", for: "customSwitch#{scene.id}" %>
+                <script>
+                    $('input[type=checkbox]').change(function() {
+                        $("#edit_scene_<%=scene.id %>").submit();
+                    });
+                </script>
+              <% end %>
+            </div>
+              <%end %>
               </div>
-
           <% end %>
+      </div>
       </div>
       <% end %>
     <div class="card-footer">

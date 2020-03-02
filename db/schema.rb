@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200301083858) do
+ActiveRecord::Schema.define(version: 20200302211332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(version: 20200301083858) do
     t.string "walk"
     t.string "pet_type"
     t.integer "home_id"
+  end
+
+  create_table "scenes", force: :cascade do |t|
+    t.string "identifier"
+    t.string "name"
+    t.integer "group_id"
+    t.integer "group_number"
   end
 
   create_table "sessions", force: :cascade do |t|

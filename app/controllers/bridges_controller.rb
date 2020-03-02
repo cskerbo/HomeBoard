@@ -22,6 +22,7 @@ class BridgesController < ApplicationController
     else
       helpers.create_groups(@bridge.id)
       helpers.create_bulbs(@bridge.id)
+      helpers.create_scenes(@bridge.id)
       render 'edit'
     end
   end

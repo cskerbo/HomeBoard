@@ -34,6 +34,7 @@ class HomesController < ApplicationController
     @lists = List.where(home_id: @home.id)
     @item = Item.new
     @bridges = Bridge.where(home_id: @home.id)
+    @groups = Group.where(bridge_id: @bridges)
     if @home.user_id != current_user.id || @user.id != current_user.id
       redirect_to '/403'
     end

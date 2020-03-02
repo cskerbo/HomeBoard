@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     resources :bridges
   end
   resources :bridges do
-    resources :bulbs
+    resources :groups do
+      resources :bulbs
+    end
+  end
+  resources :groups do
+    resources :scenes
   end
   resources :static
   root 'static#index'

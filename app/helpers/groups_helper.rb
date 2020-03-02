@@ -2,11 +2,11 @@ module GroupsHelper
 
   def change_group_status(bridge_id, group_id)
     @bridge = Bridge.find(bridge_id)
-    @group = group.find(group_id)
-    uri = URI("http://#{@bridge.internalip}/api/#{@bridge.username}/lights/#{@group.identifier}/state")
+    @group = Group.find(group_id)
+    uri = URI("http://#{@bridge.internalip}/api/#{@bridge.username}/groups/#{@group.identifier}/action")
     http = Net::HTTP.new(uri.host, uri.port)
     req = Net::HTTP::Put.new(uri.path, 'Content-Type' => 'application/json')
-    req.body = {"on":@group.on}.to_json
+    req.body = {"on":@group.state}.to_json
     res = http.request(req)
     puts "response #{res.body}"
     puts JSON.parse(res.body)
