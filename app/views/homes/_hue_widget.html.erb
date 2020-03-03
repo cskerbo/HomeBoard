@@ -25,21 +25,21 @@
                       });
                   </script>
               <% end %>
-
-            <% group.scenes.each do |scene| %>
-            <div class="custom-control custom-switch">
-              <%= form_for [group, scene], remote: true do |f| %>
-                <%= f.check_box :name, {class: "custom-control-input", id: "customSwitch#{scene.id}"}, true, false %>
-                <%= f.label :name, scene.name, class: "custom-control-label", for: "customSwitch#{scene.id}" %>
-                <script>
-                    $('input[type=checkbox]').change(function() {
-                        $("#edit_scene_<%=scene.id %>").submit();
-                    });
-                </script>
-              <% end %>
-            </div>
-              <%end %>
               </div>
+                <%group.scenes.each do |scene| %>
+              <div class="custom-control custom-switch">
+                  <%= form_for [scene], remote: true do |f| %>
+                    <%= f.check_box :name, {class: "custom-control-input", id: "sceneSwitch#{scene.id}"} %>
+                    <%= f.label :name, scene.name, class: "custom-control-label", for: "sceneSwitch#{scene.id}" %>
+                    <script>
+                        $('#sceneSwitch<%=scene.id %>').change(function() {
+                            $("#edit_scene_<%=scene.id %>").submit();
+                        });
+                    </script>
+                  <% end %>
+              </div>
+              <% end %>
+
           <% end %>
       </div>
       </div>

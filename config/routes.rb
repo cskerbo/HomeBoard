@@ -19,12 +19,13 @@ Rails.application.routes.draw do
   end
   resources :bridges do
     resources :groups do
-      resources :bulbs
+      resources :scenes
     end
   end
   resources :groups do
     resources :scenes
   end
+  resources :scenes
   resources :static
   root 'static#index'
   get '/logout', to: 'remove#destroy'
