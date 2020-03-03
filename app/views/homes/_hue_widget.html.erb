@@ -1,52 +1,67 @@
 <% @bridges.each do |bridge| %>
-<div class="col-lg-6 col-md-12 col-sm-12">
-  <div class="card card-stats">
-    <div class="card-header card-header-info card-header-icon">
-      <div class="card-icon">
-        <i class="material-icons">highlight</i>
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="card card-stats">
+      <div class="card-header card-header-info card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">highlight</i>
+        </div>
+        <h3 class="card-title">Light Control</h3>
       </div>
-      <h3 class="card-title">Light Control</h3>
-    </div>
-    <% if bridge.username == nil %>
-      <h4 class="text-center">Connect  HomeBoard to your Hue Bridge to finish setup. <br><%= link_to "I'm ready, let's do this!", edit_home_bridge_path(@home, bridge.id) %></h4>
+      <% if bridge.username == nil %>
+        <h4 class="text-center">Connect HomeBoard to your Hue Bridge to finish setup.
+          <br><%= link_to "I'm ready, let's do this!", edit_home_bridge_path(@home, bridge.id) %></h4>
       <% else %>
-      <div class="col-md-6"><br>
-        <h4>Rooms</h4>
-        <div class="col-md-12">
-          <% bridge.groups.each do |group| %>
-              <div class="custom-control custom-switch">
-                <%= form_for [bridge, group], remote: true do |f| %>
-                        <%= f.hidden_field :state, value: "false"  %>
-                        <%= f.check_box :state, {class: "custom-control-input", id: "customSwitch#{group.id}"}, true, false %>
-                  <%= f.label :name, group.name, class: "custom-control-label", for: "customSwitch#{group.id}" %>
-                  <script>
-                      $('input[type=checkbox]').change(function() {
-                          $("#edit_group_<%=group.id %>").submit();
-                      });
-                  </script>
+        <div class="col-md-12 col-sm-12"><br>
+          <h4>Rooms</h4>
+          <div class="col-md-12 col-sm-12">
+            <div class="panel-group" id="accordion">
+              <% bridge.groups.each do |group| %>
+                <div class="panel panel-default">
+                  <div class="custom-control custom-switch">
+                    <%= form_for [bridge, group], remote: true do |f| %>
+                      <%= f.hidden_field :state, value: "false" %>
+                      <%= f.check_box :state, {class: "custom-control-input", id: "customSwitch#{group.id}"}, true, false %>
+                      <%= f.label :name, group.name, class: "custom-control-label", for: "customSwitch#{group.id}" %>
+                      <script>
+                          $('#customSwitch<%=group.id %>').change(function () {
+                              $("#edit_group_<%=group.id %>").submit();
+                          });
+                      </script>
+                    <% end %>
+                  </div>
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= group.id %>">
+                        Scenes
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse<%= group.id %>" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <% group.scenes.each do |scene| %>
+                        <div class="custom-control custom-switch">
+                          <%= form_for [scene], remote: true do |f| %>
+                            <%= f.check_box :name, {class: "custom-control-input", id: "sceneSwitch#{scene.id}"} %>
+                            <%= f.label :name, scene.name, class: "custom-control-label", for: "sceneSwitch#{scene.id}" %>
+                            <script>
+                                $('#sceneSwitch<%=scene.id %>').change(function () {
+                                    $("#edit_scene_<%=scene.id %>").submit();
+                                });
+                            </script>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
               <% end %>
               </div>
-                <%group.scenes.each do |scene| %>
-              <div class="custom-control custom-switch">
-                  <%= form_for [scene], remote: true do |f| %>
-                    <%= f.check_box :name, {class: "custom-control-input", id: "sceneSwitch#{scene.id}"} %>
-                    <%= f.label :name, scene.name, class: "custom-control-label", for: "sceneSwitch#{scene.id}" %>
-                    <script>
-                        $('#sceneSwitch<%=scene.id %>').change(function() {
-                            $("#edit_scene_<%=scene.id %>").submit();
-                        });
-                    </script>
-                  <% end %>
-              </div>
-              <% end %>
-
-          <% end %>
-      </div>
-      </div>
+            </div>
+          </div>
+        </div>
       <% end %>
-    <div class="card-footer">
+      <div class="card-footer">
+      </div>
     </div>
   </div>
-</div>
 
 <% end %>

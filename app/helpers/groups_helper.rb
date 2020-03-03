@@ -40,17 +40,11 @@ module GroupsHelper
   end
 
   def refresh_group_data(bridge_id)
+    @bridge = Bridge.find(bridge_id)
     group_data = find_groups(@bridge.internalip, @bridge.username)
     group_data.each do |group|
-      @group = group.find_by(identifier: group[0])
-      @group.update(on: group[1]['state']['on'])
-      @group.update(brightness: group[1]['state']['bri'])
-      @group.update(hue: group[1]['state']['hue'])
-      @group.update(saturation: group[1]['state']['sat'])
-      @group.update(color_temperature: group[1]['state']['ct'])
-      @group.update(color_mode: group[1]['state']['colormode'])
-      @group.update(effect: group[1]['state']['effect'])
-      @group.update(name: group[1]['name'])
+      @group = Group.find_by(identifier: group[0])
+      @group.update(state: group[1]['state']['all_on'])
     end
   end
 

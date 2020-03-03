@@ -6,6 +6,7 @@ class ScenesController < ApplicationController
     @bridge = Bridge.find(@group.bridge_id)
     @bridges = Bridge.where(home_id: @bridge.home_id)
     helpers.set_scene(@bridge.id, @group.id, @scene.id)
+    helpers.refresh_group_data(@bridge.id)
     respond_to do |format|
       format.js
     end
