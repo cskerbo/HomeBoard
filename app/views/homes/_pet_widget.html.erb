@@ -4,44 +4,47 @@
       <div class="card-icon">
         <i class="material-icons">pets</i>
       </div>
-      <h3 class="card-title">Pets</h3><br>
+      <h3 class="card-title">Pets</h3><br><br>
       <div class="row">
         <div class="col-md-12">
-
           <%= form_for [@pet], remote: true do |pet| %>
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-12 col-lg-12">
-                    <h4 class="text-left"><%= @pet.status1 %></h4>
-                    <p class="text-center h5"><%= @pet.status1_status %></p>
-                    <%= pet.button 'Update', class: "btn btn-primary pull-right", id: "pet-button1", value: "1" %>
-                    <script>
-                        $('#pet-button1').click(function () {
-                            $("#edit_pet_<%=@pet.id %>").submit();
-                        });
-                    </script>
+                    <div class="col-md-12">
+                    <% if @pet.status1_time.nil? %>
+                      <p class="text-center h5">The pets haven't been fed today, they must be starving!</p>
+                      <% else %>
+                      <p class="text-center h5"><%= @pet.status1_message %> <b class="text-success h3 font-weight-bold"><%= @pet.status1_time %></b> today.</p>
+                      <% end %>
+                      <%= pet.button "#{@pet.status1}", class: "btn btn-sm btn-primary pull-right", id: "pet-button1", value: "1" %>
+                    </div>
                   </div>
                 </div>
+                <br>
                 <div class="row">
                   <div class="col-md-12 col-lg-12">
-                    <h4 class="text-left"><%= @pet.status2 %></h4>
-                    <p class="text-center h5"><%= @pet.status2_status %></p>
-                    <%= pet.button 'Update', class: "btn btn-primary pull-right", id: "pet-button2", value: "2" %>
-                    <script>
-                        $('#pet-button2').click(function () {
-                            $("#edit_pet_<%=@pet.id %>").submit();
-                        });
-                    </script>
+                    <div class="col-md-12">
+                    <% if @pet.status2_time.nil? %>
+                      <p class="text-center h5">The dogs haven't been let outside today, they seem antsy.</p>
+                    <% else %>
+                      <p class="text-center h5"><%= @pet.status2_message %> <b class="text-success h3 font-weight-bold"><%= @pet.status2_time %></b> today.</p>
+                    <% end %>
+                      <%= pet.button "#{@pet.status2}", class: "btn btn-sm btn-primary pull-right", id: "pet-button2", value: "2" %>
+                    </div>
                   </div>
-
                 </div>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="card-footer">
     </div>
-  </div>
+    <div class="card-footer">
+      <div class="stats">
+        <i class="material-icons">settings</i> <%=link_to "Settings", edit_user_home_pet_path(@user, @home, @pet) %>
+      </div>
+    </div>
+
 </div>
 </div>
 

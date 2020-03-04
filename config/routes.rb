@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     resources :scenes
   end
   resources :scenes
+  resources :users do
+    resources :homes do
+      resources :pets
+    end
+  end
   resources :pets
   resources :static
   root 'static#index'
