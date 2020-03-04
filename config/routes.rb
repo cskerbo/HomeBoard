@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :scenes
   end
   resources :scenes
+  resources :pets
   resources :static
   root 'static#index'
   get '/logout', to: 'remove#destroy'

@@ -1,45 +1,40 @@
-<div class="col-lg-4 col-md-12 col-sm-12">
+<div class="col-lg-12 col-md-12 col-sm-12">
   <div class="card card-stats">
     <div class="card-header card-header-danger card-header-icon">
       <div class="card-icon">
         <i class="material-icons">pets</i>
       </div>
-      <h3 class="card-title">Pet Status</h3><br>
+      <h3 class="card-title">Pets</h3><br>
       <div class="row">
         <div class="col-md-12">
-          <%= form_for [@user, @home] do |f| %>
-            <%= f.fields_for :pet do |pet| %>
+
+          <%= form_for [@pet], remote: true do |pet| %>
               <div class="form-group">
                 <div class="row">
-                  <div class="col-md-6">
-                    <%= pet.label :feeding, "Last Fed:", class: "float-left" %>
-                  </div>
-                  <div class="col-md-6">
-                    <p class="card-category text-success font-weight-bold"><%= @pet.feeding %></p>
-                    <%= pet.hidden_field :feeding, class: "form-control", value: Time.now %>
+                  <div class="col-md-12 col-lg-12">
+                    <h4 class="text-left"><%= @pet.status1 %></h4>
+                    <p class="text-center h5"><%= @pet.status1_status %></p>
+                    <%= pet.button 'Update', class: "btn btn-primary pull-right", id: "pet-button1", value: "1" %>
+                    <script>
+                        $('#pet-button1').click(function () {
+                            $("#edit_pet_<%=@pet.id %>").submit();
+                        });
+                    </script>
                   </div>
                 </div>
-              </div>
-              <%= f.submit "Update Fed Status", class: "btn btn-primary pull-right" %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="col-md-12">
-          <%= form_for [@user, @home] do |f| %>
-            <%= f.fields_for :pet do |pet| %>
-              <div class="form-group">
                 <div class="row">
-                  <div class="col-md-6">
-                    <%= pet.label :bathroom_break, "Last Let Outside:", class: "float-left" %>
+                  <div class="col-md-12 col-lg-12">
+                    <h4 class="text-left"><%= @pet.status2 %></h4>
+                    <p class="text-center h5"><%= @pet.status2_status %></p>
+                    <%= pet.button 'Update', class: "btn btn-primary pull-right", id: "pet-button2", value: "2" %>
+                    <script>
+                        $('#pet-button2').click(function () {
+                            $("#edit_pet_<%=@pet.id %>").submit();
+                        });
+                    </script>
                   </div>
-                  <div class="col-md-6">
-                    <p class="card-category text-success font-weight-bold"><%= @pet.bathroom_break %></p>
-                    <%= pet.hidden_field :bathroom_break, class: "form-control", value: Time.now %>
-                  </div>
+
                 </div>
-              </div>
-              <%= f.submit "Update Outside Status", class: "btn btn-primary pull-right" %>
-            <% end %>
           <% end %>
         </div>
       </div>
@@ -47,6 +42,7 @@
     <div class="card-footer">
     </div>
   </div>
+</div>
 </div>
 
 

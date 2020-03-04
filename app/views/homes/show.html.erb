@@ -1,13 +1,19 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
+      <div class="col-lg-8">
+        <div class="row">
       <%= render 'home_widget' %>
       <% if @home.weather_widget? %>
         <%= render 'weather_widget' %>
       <% end %>
+        </div>
+      </div>
+      <div class="col-lg-4" id="pet">
       <% if @home.pet_widget? %>
         <%= render 'pet_widget' %>
       <% end %>
+      </div>
     </div>
     <div class="row">
       <%= render 'network_widget' %>
@@ -15,7 +21,7 @@
         <%= render 'list_widget' %>
       <% end %>
     </div>
-    <div class="row" id="link">
+    <div class="row" id="hue">
       <% if @home.hue_widget? %>
         <%= render 'homes/hue_widget'%>
       <% end %>
@@ -23,21 +29,3 @@
   </div>
 </div>
 </div>
-<script>
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        md.initDashboardPageCharts();
-    });
-    function updateFeedingStatus(id) {
-        var x = document.getElementById(id);
-            x.innerHTML = new Date().getTime();
-    }
-    function updateButtonStatus(id) {
-        var x = document.getElementById(id);
-        if (x.innerHTML != "Log Feeding") {
-            x.innerHTML = 'Update Fed Time';
-        } else {
-            x.innerHTML = "Update Fed Time";
-        }
-    }
-</script>
