@@ -1,26 +1,29 @@
 <div class="card-body">
-  <h3>The pet widget can be customized based on your needs. </h3>
-    <ul>
-      <li class="h4">Titles equate to the action you would like to track.</li>
-    <li class="h4">Messages will always be followed by a timestamp.</li>
-    </ul>
-  <h3>Here are a few example uses:</h3>
-  <br>
+  <h3>The pet widget can be customized to your needs.</h3>
+  <ul>
+    <li class="h4"><i>Button text equates to the action you are wishing to track.</i></li>
+    <li class="h4"><i>Messages will always be followed by a time and day stamp.</i></li>
+  </ul>
+ <br><br>
+  <div class="card-header card-header-success">
+    <h3 class="card-title">Edit Status Fields</h3>
+  </div>
   <%= form_for [@pet] do |f| %>
     <div class="row">
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
+            <h3>Status 1</h3><br>
             <div class="form-group">
-              <%= f.label :status1, "Status 1 Title", class: "bmd-label-floating" %>
+              <%= f.label :status1, "Button Text", class: "bmd-label-floating" %>
               <%= f.text_field :status1, class: "form-control"%>
             </div>
             <div class="form-group">
-              <%= f.label :status1_message, "Status 1 Message", class: "bmd-label-floating" %>
+              <%= f.label :status1_message, "Message", class: "bmd-label-floating" %>
               <%= f.text_field :status1_message, class: "form-control"%>
             </div>
             <div class="form-group">
-              <%= f.label :status1_time, "Status 1 Time", class: "bmd-label-floating" %>
+              <%= f.label :status1_time, "Time", class: "bmd-label-floating" %>
               <%= f.text_field :status1_time, class: "form-control"%>
             </div>
             </div>
@@ -29,23 +32,24 @@
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
+            <h3>Status 2</h3><br>
             <div class="form-group">
-              <%= f.label :status2, "Status 2 Title", class: "bmd-label-floating" %>
+              <%= f.label :status2, "Button Text", class: "bmd-label-floating" %>
               <%= f.text_field :status2, class: "form-control"%>
             </div>
             <div class="form-group">
-              <%= f.label :status2_message, "Status 2 Message", class: "bmd-label-floating" %>
+              <%= f.label :status2_message, "Message", class: "bmd-label-floating" %>
               <%= f.text_field :status2_message, class: "form-control"%>
             </div>
             <div class="form-group">
-              <%= f.label :status2_time, "Status 2 Time", class: "bmd-label-floating" %>
+              <%= f.label :status2_time, "Time", class: "bmd-label-floating" %>
               <%= f.text_field :status2_time, class: "form-control"%>
             </div>
           </div>
         </div>
       </div>
       </div>
-    <%= f.submit class: "btn btn-primary pull-right" %>
+    <%= f.submit "Update", class: "btn btn-primary pull-right" %>
     <div class="clearfix"></div>
   <% end %>
 </div>
