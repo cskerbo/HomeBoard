@@ -1,51 +1,36 @@
 <div class="col-lg-6 col-md-6 col-sm-6">
-  <div class="card card-stats">
+  <div class="card card-stats" id="weather_widget">
     <div class="card-header card-header-success card-header-icon">
       <div class="card-icon">
         <img class="d-md-block mx-auto" src="http://openweathermap.org/img/wn/<%= @weather_widget.weather_icon %>.png" alt="">
       </div>
-      <h3 class="card-title"><%= @home.city %> Weather</h3>
+      <h3 class="card-title"><%= @home.city %>, <%= @home.state %></h3>
       <br>
+
       <div class="row">
-        <div class="col-sm-6">
-          <p class="card-category">Current Status:</p>
-        </div>
-        <div class="col-sm-6">
-          <p class="card-category" style="text-align: center"><%= @weather_widget.weather_description.titleize %></p>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4">
+              <p class="card-category" style="text-align: center"><%= @weather_widget.weather_description.titleize %></p>
+            </div>
+            <div class="col-md-4">
+              <p class="card-category" style="text-align: center"><%= @weather_widget.temp_max.round %>°/ <%= @weather_widget.temp_min.round %>°</p>
+            </div>
+            <div class="col-md-4">
+              <p class="card-category" style="text-align: center">Feels like <%= @weather_widget.feels_like.round %>°</p>
+            </div>
+            <div class="col-md-4">
+              <p class="card-category" style="text-align: center">Sunrise:</p>
+              <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunrise).strftime("%I:%M %P") %></p>
+            </div>
+            <div class="col-md-4">
+              <p class="card-category" style="text-align: center">Sunset:</p>
+              <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunset).strftime("%I:%M %P") %></p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <p class="card-category">Temperature:</p>
-        </div>
-        <div class="col-sm-6">
-          <p class="card-category" style="text-align: center"><%= @weather_widget.current_temp.round %>°</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <p class="card-category">Feels Like:</p>
-        </div>
-        <div class="col-sm-6">
-          <p class="card-category" style="text-align: center"><%= @weather_widget.feels_like.round %>°</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <p class="card-category">Sunrise:</p>
-        </div>
-        <div class="col-sm-6">
-          <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunrise).strftime("%I:%M %P") %></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <p class="card-category" >Sunset:</p>
-        </div>
-        <div class="col-sm-6">
-          <p class="card-category" style="text-align: center"><%= Time.at(@weather_widget.sunset).strftime("%I:%M %P") %></p>
-        </div>
-      </div>
+
     </div>
     <div class="card-footer">
       <div class="stats">

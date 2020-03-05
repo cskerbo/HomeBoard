@@ -263,6 +263,13 @@ html .clear-completed:active {
     text-decoration: underline;
 }
 
+#weather_widget {
+    background-image: url("sky_cloudy.jpg");
+    background-repeat: no-repeat;
+    background-size:
+
+}
+
 /*
 	Hack to remove background from Mobile Safari.
 	Can't use it globally since it destroys checkboxes in Firefox
