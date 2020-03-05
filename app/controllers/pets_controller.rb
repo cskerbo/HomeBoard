@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+  before_action :authenticate_user!
 
   def update
     @user = current_user
