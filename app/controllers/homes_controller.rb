@@ -28,8 +28,10 @@ class HomesController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @home = Home.find(params[:id])
-    helpers.update_weather_widget(@home.weather_widget_id) if @home.weather_widget?
     @weather_widget = WeatherWidget.find(@home.weather_widget_id) if @home.weather_widget?
+    helpers.need_update(@home.id) if @home.weather_widget?
+    @forecast = helpers.find_current_forecast(@weather_widget.id)
+    @today = helpers.find_current_day(@weather_widget.id)
     @pet = Pet.find_by_home_id(@home.id)
     @lists = List.where(home_id: @home.id)
     @item = Item.new

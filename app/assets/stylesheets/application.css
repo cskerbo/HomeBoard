@@ -81,6 +81,7 @@ input:checked + .slider:before {
 .card{
     background-color: rgba(0,0,0,0.6) !important;
     color: white;
+    border-radius: 0;
 }
 
 .card-stats .card-header.card-header-icon img {
@@ -263,12 +264,14 @@ html .clear-completed:active {
     text-decoration: underline;
 }
 
-#weather_widget {
-    background-image: url("sky_cloudy.jpg");
-    background-repeat: no-repeat;
-    background-size:
 
+
+.weather {
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
 }
+
 
 /*
 	Hack to remove background from Mobile Safari.

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200302211332) do
+ActiveRecord::Schema.define(version: 20200305194801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,22 @@ ActiveRecord::Schema.define(version: 20200302211332) do
     t.string "effect"
     t.integer "identifier"
     t.integer "group_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.string "date"
+    t.boolean "today", default: false
+    t.string "summary"
+    t.string "icon"
+    t.string "sunset"
+    t.string "sunrise"
+    t.float "temp_high"
+    t.float "temp_low"
+    t.integer "weather_widget_id"
+    t.float "precipitation_chance"
+    t.string "precipitation_type"
+    t.float "feels_like"
+    t.float "current_temp"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -133,17 +149,6 @@ ActiveRecord::Schema.define(version: 20200302211332) do
   end
 
   create_table "weather_widgets", force: :cascade do |t|
-    t.integer "weather_id"
-    t.string "weather_main"
-    t.string "weather_description"
-    t.string "weather_icon"
-    t.float "current_temp"
-    t.float "feels_like"
-    t.float "temp_min"
-    t.float "temp_max"
-    t.integer "sunrise"
-    t.integer "sunset"
-    t.integer "widget_id"
     t.integer "home_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
