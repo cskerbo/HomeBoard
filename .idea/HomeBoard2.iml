@@ -63,6 +63,7 @@
     <orderEntry type="library" scope="PROVIDED" name="faraday (v1.0.0, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.12.2, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi-compiler (v1.0.1, ruby-2.6.5-p114) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ffi-win32-extensions (v1.0.3, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="font-awesome-rails (v4.7.0.5, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="geocoder (v1.6.1, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, ruby-2.6.5-p114) [gem]" level="application" />
@@ -71,6 +72,7 @@
     <orderEntry type="library" scope="PROVIDED" name="http-cookie (v1.0.3, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="http-form_data (v2.2.0, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="http-parser (v1.2.1, ruby-2.6.5-p114) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="http_scanner (v0.2.1, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.8.2, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.10.0, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.3.5, ruby-2.6.5-p114) [gem]" level="application" />
@@ -84,6 +86,7 @@
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.14.1, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.6.0, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multipart-post (v2.1.1, ruby-2.6.5-p114) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-ping (v2.0.6, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.2, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.10.8, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="oauth2 (v1.4.3, ruby-2.6.5-p114) [gem]" level="application" />
@@ -128,6 +131,7 @@
     <orderEntry type="library" scope="PROVIDED" name="web-console (v3.7.0, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.6.5, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.4, ruby-2.6.5-p114) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="win32-security (v0.5.0, ruby-2.6.5-p114) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, ruby-2.6.5-p114) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">

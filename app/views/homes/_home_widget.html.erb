@@ -4,8 +4,15 @@
       <div class="card-icon">
         <i class="material-icons">home</i>
       </div>
-      <h3 class="card-title"><%= @home.name %></h3>
-      <p class="card-category"><%= @home.address %></p>
+      <h1 class="card-title" id="time"></h1>
+      <h3 class="card-title"><%= Date.today.strftime('%A %B %d, %Y') %></h3>
+      <br><br>
+      <p class="font-italic text-center text-success">No events today</p>
+      <br>
+      <blockquote class="h4 blockquote text-center">
+        <p class="mb-0">"<%= @home.quote %>"</p>
+        <footer class="blockquote-footer"><%= @home.quote_author %></footer>
+      </blockquote>
     </div>
     <div class="card-footer">
       <div class="stats">
@@ -15,3 +22,15 @@
     </div>
   </div>
 </div>
+<script>
+    var interval = setInterval(timestamphome, 1000);
+
+    function timestamphome(){
+        var date;
+        date = new Date();
+
+        var time = document.getElementById('time');
+        time.innerHTML = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+    }
+</script>

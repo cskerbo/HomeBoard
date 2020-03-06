@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20200305194801) do
     t.boolean "pet_widget", default: false
     t.boolean "list_widget", default: false
     t.boolean "hue_widget", default: false
+    t.string "quote"
+    t.string "quote_author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

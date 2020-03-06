@@ -87,7 +87,7 @@ module WeatherWidgetsHelper
     @weather_widget.update(updated_at: Time.now)
   end
 
-  def need_update(home_id)
+  def need_weather_update(home_id)
     @weather_widget = WeatherWidget.find_by_home_id(home_id)
     if @weather_widget.updated_at <= 1.minutes.ago
       update_forecast(home_id)

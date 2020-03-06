@@ -25,7 +25,6 @@
                 <img class="d-md-block mx-auto" src="<%= image_path('icons/precip_chance.svg') %>" alt="">
                 <p class="card-category" style="text-align: center">0%</p>
               </div>
-
               <% end %>
             <%unless @today.precipitation_type.nil? %>
             <div class="weather col-md-4">
@@ -33,7 +32,8 @@
               <p class="card-category" style="text-align: center"><%= @today.precipitation_chance %>%</p>
             </div>
             <div class="weather col-md-4">
-              <p class="card-category" style="text-align: center"><%= @today.precipitation_type %></p>
+              <img class="d-md-block mx-auto" src="<%= image_path("icons/#{@today.precipitation_type}.svg") %>" alt="">
+              <p class="card-category" style="text-align: center"><%= @today.precipitation_type.titleize %></p>
             </div>
               <% end %>
             <div class="weather col-md-4">
@@ -50,7 +50,7 @@
             <% @forecast.each do |day| %>
             <div class="col weather">
               <p class="card-category h6" style="text-align: center; font-size: small"><%= day.date %></p>
-              <img class="d-md-block mx-auto" style="width: 20px; height: 20px;" src="<%= image_path("icons/#{day.precipitation_type}.svg") %>" alt="">
+              <img class="d-md-block mx-auto" style="width: 20px; height: 20px;" src="<%= image_path("icons/#{day.icon}.svg") %>" alt="">
               <p class="card-category h6" style="text-align: center; font-size: x-small"><%= day.temp_high.round %>°/<%= day.temp_low.round %>°</p>
             </div>
               <% end %>

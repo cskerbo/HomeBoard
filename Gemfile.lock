@@ -95,6 +95,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    ffi-win32-extensions (1.0.3)
+      ffi
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     geocoder (1.6.1)
@@ -111,6 +113,7 @@ GEM
     http-form_data (2.2.0)
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
+    http_scanner (0.2.1)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
@@ -132,6 +135,7 @@ GEM
     multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    net-ping (2.0.6)
     nio4r (2.5.2)
     nokogiri (1.10.8-x64-mingw32)
       mini_portile2 (~> 2.4.0)
@@ -239,6 +243,9 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    win32-security (0.5.0)
+      ffi
+      ffi-win32-extensions
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -258,8 +265,10 @@ DEPENDENCIES
   font-awesome-rails
   geocoder
   http
+  http_scanner
   jbuilder (~> 2.5)
   jquery-rails
+  net-ping
   omniauth
   omniauth-google-oauth2
   pg (>= 0.18, < 2.0)
@@ -273,6 +282,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  win32-security
 
 BUNDLED WITH
    2.1.4

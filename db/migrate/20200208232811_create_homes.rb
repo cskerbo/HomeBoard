@@ -15,6 +15,8 @@ class CreateHomes < ActiveRecord::Migration[5.1]
       t.boolean :pet_widget, default: false
       t.boolean :list_widget, default: false
       t.boolean :hue_widget, default: false
+      t.string :quote
+      t.string :quote_author
 
       t.timestamps
     end

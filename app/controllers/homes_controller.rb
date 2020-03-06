@@ -19,6 +19,7 @@ class HomesController < ApplicationController
       helpers.create_list_widget(@home.id)
       helpers.create_weather_widget(@home.id) if @home.weather_widget?
       helpers.create_bridges(@home.id) if @home.hue_widget?
+      helpers.quote_of_the_day(@home.id)
       redirect_to user_home_path(current_user, @home)
     else
       render 'index'
@@ -29,7 +30,7 @@ class HomesController < ApplicationController
     @user = User.find(params[:user_id])
     @home = Home.find(params[:id])
     @weather_widget = WeatherWidget.find(@home.weather_widget_id) if @home.weather_widget?
-    helpers.need_update(@home.id) if @home.weather_widget?
+    helpers.need_weather_update(@home.id) if @home.weather_widget?
     @forecast = helpers.find_current_forecast(@weather_widget.id)
     @today = helpers.find_current_day(@weather_widget.id)
     @pet = Pet.find_by_home_id(@home.id)
