@@ -18,7 +18,9 @@
     <div class="row">
       <%= render 'network_widget' %>
       <% if @home.list_widget? %>
+        <div class="col-lg-6" id="list">
         <%= render 'list_widget' %>
+        </div>
       <% end %>
     </div>
     <div class="row" id="hue">

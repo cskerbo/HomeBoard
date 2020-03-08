@@ -21,7 +21,6 @@ class ListsController < ApplicationController
   def index
     @user = current_user
     @home = Home.find(params[:home_id])
-    @lists = List.where(home_id: @home.id)
     @list = List.new
     @item = Item.new
   end

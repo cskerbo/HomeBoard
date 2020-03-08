@@ -34,9 +34,9 @@ class HomesController < ApplicationController
     @forecast = helpers.find_current_forecast(@weather_widget.id)
     @today = helpers.find_current_day(@weather_widget.id)
     @pet = Pet.find_by_home_id(@home.id)
-    @lists = List.where(home_id: @home.id)
-    @item = Item.new
-    @bridges = Bridge.where(home_id: @home.id)
+    @lists = @home.lists
+    @new_item = Item.new
+    @bridges = @home.bridges
     @groups = Group.where(bridge_id: @bridges)
     if @home.user_id != current_user.id || @user.id != current_user.id
       redirect_to '/403'

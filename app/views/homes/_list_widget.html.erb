@@ -1,5 +1,5 @@
 <% @lists.each do |list| %>
-<div class="col-lg-6 col-md-12">
+<div class="col-md-12">
   <div class="card">
     <div class="card-header card-header-tabs card-header-primary">
       <div class="nav-tabs-navigation">
@@ -18,12 +18,13 @@
         <div class="form-group">
           <% if list.name == "" %>
             <h4 class="text-center"><%= 'This is a default list created for you, you should' %>
-            <%= link_to "change the name" + '.', edit_user_home_list_path(current_user, @home, list), data: { turbolinks: 'false' } %>
+            <%= link_to "change the name" + '.', edit_user_home_list_path(@user, @home, list), data: { turbolinks: 'false' } %>
             </h4>
           <% end %>
-        <%= form_for([@user, @home, list, @item]) do |f| %>
-          <%= f.text_field :description, :class => "form-control text-center", :placeholder => (@item.errors.full_messages_for(:description).first || "Enter a new item...") %>
-          <%= f.submit :style => "display: none" %>
+        <%= form_for [@user, @home, list, @new_item], remote: true do |f| %>
+          <%= f.text_field :description, :class => "form-control text-center", :placeholder => (@new_item.errors.full_messages_for(:description).first || "Enter a new item..."), id: "addItem" %>
+          <%= f.submit :style => "display: none", data: { disable_with: "Please wait..."} %>
+
         <% end %>
         </div>
       </div>
@@ -36,10 +37,10 @@
               <% list.items.each do |item| %>
                 <li class="<%= "completed" if item.complete? %>">
                   <div class="view">
-                    <%= form_for([list, item]) do |f| %>
+                    <%= form_for [list, item], remote: true do |f| %>
                       <%= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
+                      <%= f.submit :style => "display: none", data: { disable_with: "Please wait..."} %>
                     <% end %>
-
                     <label><%= item.description %></label>
                   </div>
                 </li>

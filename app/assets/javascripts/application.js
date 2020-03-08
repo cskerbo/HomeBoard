@@ -32,7 +32,7 @@
 //= require material/jquery-jvectormap
 //= require material/material-dashboard
 //= require material/fullcalendar.min
-//= require rails-ujs
+
 //= require_tree .
 
 $(function(){
