@@ -12,16 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require popper
 
 
 //= require_tree .
 
-$(function(){
-    $("input.toggle").on("change", function(){
-        $(this).parents("form").trigger("submit")
-    })
-});
 
 function checkTime(i) {
     if (i < 10) {

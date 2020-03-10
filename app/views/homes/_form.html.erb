@@ -1,8 +1,6 @@
 
       <div class="card-body">
-
-
-<%= form_for [@user, @home] do |f| %>
+        <%= form_for [@user, @home] do |f| %>
     <% if @home.errors.any? %>
       <div id="error_explanation">
         <h4 class="text-danger">

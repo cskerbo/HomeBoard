@@ -39,6 +39,22 @@ html *
     margin-top: 10px;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Numans', sans-serif;
+    z-index: 10;
+}
+
+
 .navbar {
     background: #007bff;
     background: linear-gradient(to right, #0062E6, #33AEFF);
@@ -141,7 +157,7 @@ input:checked + .slider:before {
 
 
 .form-control {
-    color: white;
+
 }
 
 a {
@@ -1257,7 +1273,15 @@ h4.text-center {
     margin-top: 20px;
 }
 
-.card-stats .card-header.card-header-icon i {
+.card-stats .card-header.card-header-icon i.material-icons {
+    font-size: 36px;
+    line-height: 56px;
+    width: 56px;
+    height: 56px;
+    text-align: center;
+}
+
+.card-stats .card-header.card-header-icon i.fas.fa-list-alt {
     font-size: 36px;
     line-height: 56px;
     width: 56px;
@@ -1352,8 +1376,40 @@ h4.text-center {
 }
 
 
+i.fas.fa-plus-square#add-item {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: green;
+}
 
+button#add-item {
+    background-color: transparent;
+    border: none;
 
+}
+
+i.fas.fa-times-circle#remove-item {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: red;
+}
+
+button#remove-item {
+    background-color: transparent;
+    border: none;
+
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    padding: 0px;
+}
+
+table {
+    table-layout: fixed;
+}
 
 /*
 	Hack to remove background from Mobile Safari.

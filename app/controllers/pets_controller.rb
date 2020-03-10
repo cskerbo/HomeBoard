@@ -22,7 +22,9 @@ class PetsController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @pet = Pet.find(params[:id])
+    @home = Home.find(params[:home_id])
   end
 
   private

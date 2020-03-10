@@ -1,84 +1,92 @@
 <% @lists.each do |list| %>
-<div class="col-md-12">
-  <div class="card">
-    <div class="card-header card-header-tabs card-header-primary">
-      <div class="nav-tabs-navigation">
-        <div class="nav-tabs-wrapper">
-          <span class="nav-tabs-title"><%= list.name %>
-            <% if list.name == "" %>
-               <% name = "Default List"  %>
-              <%= name %>
-              <%end %>
-          </span>
+  <div class="col-md-12">
+    <div class="card card-stats">
+      <div class="card-header card-header-icon card-header-primary">
+        <div class="card-icon">
+          <i class="fas fa-list-alt"></i>
         </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-12 col-sm-12">
-        <div class="form-group">
-          <% if list.name == "" %>
-            <br>
-            <h5 class="text-center"><%= 'This is a default list created for you, you should' %>
-            <%= link_to "change the name" + '.', edit_user_home_list_path(@user, @home, list), data: { turbolinks: 'false' } %>
-            </h5>
-            <br>
-          <% end %>
-        <%= form_for [@user, @home, list, @new_item], remote: true do |f| %>
-            <div class="row">
-              <div class="col-md-6">
-                <%= f.text_field :description, :class => "form-control text-center", required: true, :placeholder => (@new_item.errors.full_messages_for(:description).first || "Enter a new item..."), id: "add-item" %>
-              </div>
-              <div class="col-md-4 float-right">
-                <button type="submit" rel="tooltip" class="btn btn-success btn-link btn-sm">
-                  <i class="material-icons">add</i>
-                </button>
-              </div>
-            </div>
+        <h4 class="card-title"><%= list.name %></h4>
+        <% if list.name == "" %>
+          <% name = "Default List" %>
+          <h4 class="card-title"><%= name %></h4>
         <% end %>
+        <div class="card-body">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <br>
+              <% if list.name == "" %>
+                <h5 class="text-center"><%= 'This is a default list created for you, you should' %>
+                  <%= link_to "change the name" + '.', edit_user_home_list_path(@user, @home, list), data: {turbolinks: 'false'} %>
+                </h5>
+              <% end %>
+              <br>
+              <%= form_for [@user, @home, list, @new_item], remote: true do |f| %>
+                <div class="row">
+                  <div class="col-md-8">
+                    <%= f.text_field :description, :class => "form-control text-center", required: true, :placeholder => (@new_item.errors.full_messages_for(:description).first || "Enter a new item..."), id: "add-item" %>
+                  </div>
+                  <div class="col-md-4 float-right">
+                    <button type="submit" rel="tooltip" class="btn-sm" id="add-item">
+                      <i class="fas fa-plus-square fa-2x" id="add-item"></i>
+                    </button>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="tab-content">
+            <div class="tab-pane active" id="LISTNAME">
+              <table class="table">
+                <tbody>
+                <% list.items.order("status asc").each do |item| %>
+                  <tr>
+                    <td>
+                    <%= form_for [list, item], remote: true do |f| %>
+                      <div class="form-check">
+                        <div class="col-md-11 text-left">
+                          <%= f.check_box :status, :checked => (true if item.complete?), class: "toggle" %>
+                          <%= f.label item.description, id: "strikethrough" %>
+                          <%= f.submit :style => "display: none" %>
+                        </div>
+                    <% end %>
+                    </div>
+                    </td>
+
+
+                    <td class="td-actions">
+                      <%= form_for [list, item], method: :delete, remote: true do |f| %>
+                        <button type="submit" rel="tooltip" class="btn-sm" id="remove-item">
+                          <i class="fas fa-times-circle fa-lg" id="remove-item"></i>
+                        </button>
+                      <% end %>
+                    </td>
+                    </tr>
+                <% end %>
+                </tbody>
+                </table>
+                </div>
         </div>
       </div>
     </div>
-    <div class="card-body">
-      <div class="tab-content">
-        <div class="tab-pane active" id="LISTNAME">
-          <table class="table">
-            <tbody>
-            <% list.items.order("status asc").each do |item| %>
-              <tr>
-                <td>
-                  <div class="form-check">
-                    <%= form_for [list, item], remote: true do |f| %>
-                          <div class="row">
-                          <div class="col-md-12">
-                            <%= f.check_box :status, :checked => (true if item.complete?), class: "toggle" %>
-                            <%= f.label item.description, id: "strikethrough" %>
-                            <%= f.submit :style => "display: none" %>
-                          </div>
-                          </div>
-                    <% end %>
-                  </div>
-                </td>
-                <td class="td-actions">
-                  <%= form_for [list, item], method: :delete, remote: true do |f| %>
-                    <button type="submit" rel="tooltip" class="btn btn-danger btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-        </div>
+    <div class="card-footer">
+      <div class="stats">
+        <i class="material-icons">settings</i>
+        <a href="<%= edit_user_home_list_path(current_user, @home, list) %>">Settings</a>
+      </div>
+      <div class="stats">
+        <i class="material-icons">add</i>
+        <a href="<%= user_home_lists_path(current_user, @home) %>">New List</a>
       </div>
     </div>
   </div>
-</div>
+  </div>
   <script>
-  $(function(){
-  $("input.toggle").on("change", function(){
-  $(this).parents("form").trigger("submit")
-  })
-  });
+      $(function () {
+          $("input.toggle").on("change", function () {
+              $(this).parents("form").trigger("submit")
+          })
+      });
   </script>
 <% end %>
