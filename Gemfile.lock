@@ -113,7 +113,6 @@ GEM
     http-form_data (2.2.0)
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
-    http_scanner (0.2.1)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
@@ -265,7 +264,6 @@ DEPENDENCIES
   font-awesome-rails
   geocoder
   http
-  http_scanner
   jbuilder (~> 2.5)
   jquery-rails
   net-ping

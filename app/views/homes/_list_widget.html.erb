@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-6 col-sm-6">
         <div class="form-group">
           <% if list.name == "" %>
             <h4 class="text-center"><%= 'This is a default list created for you, you should' %>
@@ -22,9 +22,16 @@
             </h4>
           <% end %>
         <%= form_for [@user, @home, list, @new_item], remote: true do |f| %>
-          <%= f.text_field :description, :class => "form-control text-center", :placeholder => (@new_item.errors.full_messages_for(:description).first || "Enter a new item..."), id: "addItem" %>
-          <%= f.submit :style => "display: none", data: { disable_with: "Please wait..."} %>
-
+            <div class="row">
+              <div class="col-md-8">
+                <%= f.text_field :description, :class => "form-control text-center", :placeholder => (@new_item.errors.full_messages_for(:description).first || "Enter a new item..."), id: "addItem" %>
+              </div>
+              <div class="col-md-4">
+                <button type="submit" rel="tooltip" class="btn btn-success btn-link btn-sm">
+                  <i class="material-icons">add</i>
+                </button>
+              </div>
+            </div>
         <% end %>
         </div>
       </div>
@@ -32,24 +39,44 @@
     <div class="card-body">
       <div class="tab-content">
         <div class="tab-pane active" id="LISTNAME">
-          <section class="main">
-            <ul class="todo-list">
-              <% list.items.each do |item| %>
-                <li class="<%= "completed" if item.complete? %>">
-                  <div class="view">
+          <table class="table">
+            <tbody>
+            <% list.items.order("status asc").each do |item| %>
+              <tr>
+                <td>
+                  <div class="form-check">
                     <%= form_for [list, item], remote: true do |f| %>
-                      <%= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
-                      <%= f.submit :style => "display: none", data: { disable_with: "Please wait..."} %>
+                          <div class="row">
+                          <div class="col-md-12">
+                            <%= f.check_box :status, :checked => (true if item.complete?), class: "toggle" %>
+                            <%= f.label item.description, id: "strikethrough" %>
+                            <%= f.submit :style => "display: none" %>
+                          </div>
+                          </div>
                     <% end %>
-                    <label><%= item.description %></label>
                   </div>
-                </li>
-              <% end %>
-            </ul>
-          </section>
+                </td>
+                <td class="td-actions">
+                  <%= form_for [list, item], method: :delete, remote: true do |f| %>
+                    <button type="submit" rel="tooltip" class="btn btn-danger btn-link btn-sm">
+                      <i class="material-icons">close</i>
+                    </button>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 </div>
+  <script>
+  $(function(){
+  $("input.toggle").on("change", function(){
+  $(this).parents("form").trigger("submit")
+  })
+  });
+  </script>
 <% end %>

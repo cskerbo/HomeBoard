@@ -1,9 +1,4 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header card-header-primary">
-        <h3 class="card-title ">Existing Lists</h3>
-      </div>
+
       <div class="card-body">
         <div class="table-responsive">
           <table class="table">
@@ -18,11 +13,21 @@
             <tbody>
             <% @home.lists.each do |list| %>
               <tr>
-                <td><%= link_to list.name, user_home_list_path(current_user, @home.id, list.id), data: { turbolinks: 'false' } %></td>
+                <td> <%= form_for [list] do |f| %>
+                    <div class="row">
+                    <div class="col-md-4">
+                    <%= f.hidden_field :home_id, value: "#{@home.id}"  %>
+                    <%= f.text_field :name, class: "form-control", :required => true, placeholder: "List Name" %>
+                    </div>
+                    <div class="col-md-4">
+                    <%= f.submit "Update Name", class: "btn btn-sm btn-primary pull-right" %>
+                    </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  <% end %></td>
                 <td><%= list.items.count %></td>
                 <td></td>
-                <td><%= button_to "Rename", edit_user_home_list_path(current_user, @home.id, list.id), method: :get %></td>
-                <td><%= button_to "View/Edit", user_home_list_path(current_user, @home.id, list.id), method: :get %></td>
+                <td></td>
                 <td><%= button_to "Delete", list, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }%></td>
               </tr>
             <% end %>
@@ -30,10 +35,3 @@
           </table>
         </div>
       </div><br><br>
-      <div class="card-header card-header-success">
-        <h3 class="card-title">Create New List</h3>
-      </div>
-      <%= render 'form' %>
-    </div>
-  </div>
-</div>

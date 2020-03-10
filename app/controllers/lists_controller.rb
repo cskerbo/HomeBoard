@@ -15,21 +15,22 @@ class ListsController < ApplicationController
     @user = current_user
     @home = Home.find(params[:home_id])
     @list = List.find(params[:id])
-    @item = Item.new
+    @new_item = Item.new
   end
 
   def index
     @user = current_user
     @home = Home.find(params[:home_id])
-    @list = List.new
-    @item = Item.new
+    @new_list = List.new
+    @new_item = Item.new
   end
 
   def update
     @user = current_user
-    @home = Home.find(params[:home_id])
     @list = List.find(params[:id])
+    @home = Home.find(@list.home_id)
     @list.update(list_params)
+    @new_list = List.new
     redirect_to user_home_lists_path(current_user, @home.id)
   end
 
@@ -37,10 +38,11 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @user = current_user
     @home = Home.find(params[:home_id])
+    @new_list = List.new
     if @list.save!
-      redirect_to user_home_path(current_user, @list.home_id)
-    else
       @lists = List.all
+      render :index
+    else
       render :index
     end
   end

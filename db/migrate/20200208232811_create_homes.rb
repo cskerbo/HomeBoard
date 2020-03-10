@@ -17,7 +17,7 @@ class CreateHomes < ActiveRecord::Migration[5.1]
       t.boolean :hue_widget, default: false
       t.string :quote
       t.string :quote_author
-
+      
       t.timestamps
     end
   end

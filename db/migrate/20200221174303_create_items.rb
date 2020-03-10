@@ -4,6 +4,8 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :description
       t.integer :status
       t.integer :list_id
+
+      t.timestamps
     end
   end
 end

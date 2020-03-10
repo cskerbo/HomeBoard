@@ -6,9 +6,26 @@
           <div class="card-header card-header-primary">
             <h3 class="card-title">Edit List</h3>
           </div>
+          <div class="card-body">
+            <%= form_for [@user, @home, @list] do |f| %>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <%= f.hidden_field :home_id, value: "#{@home.id}"  %>
+                    <%= f.label :name, "List Name", class: "bmd-label-floating" %>
+                    <%= f.text_field :name, class: "form-control", :required => true %>
+                  </div>
+                </div>
+              </div>
+              <%= f.submit "Update Name", class: "btn btn-primary pull-right" %>
+              <div class="clearfix"></div>
+            <% end %>
+          </div>
+          <br><br>
     <%= render 'form' %>
         </div>
       </div>
     </div>
   </div>
 </div>
+

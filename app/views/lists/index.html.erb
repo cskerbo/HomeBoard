@@ -1,8 +1,21 @@
 <div class="content">
   <div class="container-fluid">
+    <a href="javascript:history.back()">< Return to Home Settings</a>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h3 class="card-title ">Existing Lists</h3>
+          </div>
     <% if @home.lists.count != 0 %>
       <%= render 'existing_lists' %>
     <%end %>
-
+    <div class="card-header card-header-success">
+      <h3 class="card-title">Create a New List</h3>
+    </div>
+    <%= render 'new_form' %>
+  </div>
+</div>
+    </div>
   </div>
 </div>
