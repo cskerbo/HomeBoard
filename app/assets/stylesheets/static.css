@@ -1,0 +1,132 @@
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Numans', sans-serif;
+    z-index: 10;
+}
+
+
+html,body{
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Numans', sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+html *
+{
+    font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif
+}
+
+
+.container{
+    height: 100vh;
+    align-content: center;
+}
+
+.card{
+    height: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.4) !important;
+}
+
+.social_icon span{
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFFFFF;
+}
+
+.social_icon span:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.card-header h3{
+    color: white;
+}
+
+.social_icon{
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #FFFFFF;
+    color: black;
+    border:0 !important;
+}
+.or-seperator {
+    margin: 20px 0 10px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+.or-seperator i {
+    padding: 0 10px;
+    background: rgba(0,0,0) !important;
+    position: relative;
+    top: -11px;
+    color: white;
+    z-index: 1;
+}
+
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+    color: white;
+}
+
+.remember input
+{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+
+.login_btn{
+    color: black;
+    background-color: #FFFFFF;
+    width: 100px;
+}
+
+.login_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.links{
+    color: white;
+}
+
+.links a{
+    margin-left: 4px;
+}
+
+.btn-google {
+    color: white;
+    background-color: #ea4335;
+    width: 60%;
+}

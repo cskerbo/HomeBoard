@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
   resources :pets
   resources :static
-  root 'static#index'
   get '/logout', to: 'remove#destroy'
+  root 'static#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
