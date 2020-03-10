@@ -14,19 +14,21 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-6 col-sm-6">
+      <div class="col-md-12 col-sm-12">
         <div class="form-group">
           <% if list.name == "" %>
-            <h4 class="text-center"><%= 'This is a default list created for you, you should' %>
+            <br>
+            <h5 class="text-center"><%= 'This is a default list created for you, you should' %>
             <%= link_to "change the name" + '.', edit_user_home_list_path(@user, @home, list), data: { turbolinks: 'false' } %>
-            </h4>
+            </h5>
+            <br>
           <% end %>
         <%= form_for [@user, @home, list, @new_item], remote: true do |f| %>
             <div class="row">
-              <div class="col-md-8">
-                <%= f.text_field :description, :class => "form-control text-center", :placeholder => (@new_item.errors.full_messages_for(:description).first || "Enter a new item..."), id: "addItem" %>
+              <div class="col-md-6">
+                <%= f.text_field :description, :class => "form-control text-center", required: true, :placeholder => (@new_item.errors.full_messages_for(:description).first || "Enter a new item..."), id: "add-item" %>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 float-right">
                 <button type="submit" rel="tooltip" class="btn btn-success btn-link btn-sm">
                   <i class="material-icons">add</i>
                 </button>

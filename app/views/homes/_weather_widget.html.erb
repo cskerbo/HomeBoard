@@ -4,8 +4,8 @@
       <div class="card-icon">
         <img class="d-md-block mx-auto" src="<%= image_path("icons/#{@today.icon}.svg") %>" alt="">
       </div>
-      <h3 class="card-title"><%= @home.city %>, <%= @home.state %></h3>
-      <h4 class="card-title"><%= @today.current_temp.round %>°</h4>
+      <h4 class="card-title"><%= @home.city %>, <%= @home.state %></h4>
+      <h5 class="card-title"><%= @today.current_temp.round %>°</h5>
       <p class="card-title" style="font-style: italic; font-size: small">Feels like <%= @today.feels_like.round %>°</p>
       <h4 class="card-title"></h4>
       <br>
