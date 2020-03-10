@@ -19,7 +19,7 @@
   <header>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
       <!-- Brand -->
-      <a class="navbar-brand" href="#">HomeBoard</a>
+      <a class="navbar-brand" href="<%= user_homes_path(current_user) %>">HomeBoard</a>
 
       <!-- Toggler/collapsibe Button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -27,7 +27,7 @@
       </button>
 
       <!-- Navbar links -->
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -36,7 +36,7 @@
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="<%= destroy_user_session_path %>">Logout</a>
           </li>
         </ul>
       </div>
