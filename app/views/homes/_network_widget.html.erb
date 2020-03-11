@@ -6,6 +6,9 @@
       </div>
       <h4 class="card-title">Network Status</h4>
     </div>
+    <%= calendar number_of_days: 1 do |date| %>
+      <%= date %>
+    <% end %>
     <div class="card-footer">
       <div class="stats">
         <i class="material-icons">update</i> Just Updated
