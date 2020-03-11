@@ -7,6 +7,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @home = Home.find(params[:home_id])
     @list = List.find(params[:id])
     @item = Item.new
   end
