@@ -26,6 +26,7 @@ module GroupsHelper
   # @param [Object] bridge_id
   def create_groups(bridge_id)
     @bridge = Bridge.find(bridge_id)
+    unless @bridge.username.nil?
     group_data = find_groups(@bridge.internalip, @bridge.username)
     group_data.each do |group|
       @group = Group.new
@@ -36,6 +37,7 @@ module GroupsHelper
       @group.identifier = group[0]
       @group.bridge_id = @bridge.id
       @group.save!
+    end
     end
   end
 

@@ -16,7 +16,9 @@
       </div>
     </div>
     <div class="row">
-      <%= render 'network_widget' %>
+      <% if @home.calendar_widget? %>
+        <%= render 'calendar_widget' %>
+      <% end %>
       <% if @home.list_widget? %>
         <div class="col-lg-6" id="list">
         <%= render 'list_widget' %>

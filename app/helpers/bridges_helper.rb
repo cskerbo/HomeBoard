@@ -7,6 +7,7 @@ module BridgesHelper
   end
 
   def register_hue_user(internalip)
+    unless !@bridge.username.nil?
     http = Net::HTTP.new(internalip, 80)
     data = { "devicetype"=>"homeboard" }
     response = http.post "/api", data.to_json
@@ -16,6 +17,8 @@ module BridgesHelper
     elsif result["success"]
       @bridge.username = result["success"]["username"]
       @bridge.save!
+      flash[:notice] = "Bridge connection successful!"
+    end
     end
   end
 

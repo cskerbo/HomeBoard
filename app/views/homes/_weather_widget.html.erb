@@ -57,11 +57,10 @@
           </div>
         </div>
       </div>
-
     </div>
     <div class="card-footer">
       <div class="stats">
-        <i class="material-icons">date_range</i> Updated: <%= @weather_widget.updated_at %>
+        <i class="material-icons">date_range</i> Updated: <%= @weather_widget.updated_at.strftime('%l:%M %P') %>
       </div>
     </div>
   </div>

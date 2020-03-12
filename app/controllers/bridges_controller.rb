@@ -15,16 +15,11 @@ class BridgesController < ApplicationController
     @home = Home.find(params[:home_id])
     @bridges = Bridge.where(home_id: @home.id)
     @bridge = Bridge.find(params[:id])
-    if @bridge.username.nil?
-      helpers.register_hue_user(@bridge.internalip)
-
-      render 'edit'
-    else
-      helpers.create_groups(@bridge.id)
-      helpers.create_bulbs(@bridge.id)
-      helpers.create_scenes(@bridge.id)
-      render 'edit'
-    end
+    helpers.register_hue_user(@bridge.internalip)
+    helpers.create_groups(@bridge.id)
+    helpers.create_bulbs(@bridge.id)
+    helpers.create_scenes(@bridge.id)
+    render 'edit'
   end
 
 end

@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'simple_calendar'
+gem 'fullcalendar'
+gem 'momentjs-rails'
 gem 'net-ping'
 gem 'win32-security'
 gem 'http'

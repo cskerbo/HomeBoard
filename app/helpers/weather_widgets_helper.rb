@@ -84,7 +84,7 @@ module WeatherWidgetsHelper
       end
     end
     current_weather_today(@weather_widget, @home)
-    @weather_widget.update(updated_at: Time.now)
+    @weather_widget.update(updated_at: Time.now.strftime('%l:%M %P'))
   end
 
   def need_weather_update(home_id)

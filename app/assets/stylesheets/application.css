@@ -11,11 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
-
+*= require calendar
  *= require_tree .
+*= require calendar
  *= require_self
  */
-/* The switch - the box around the slider */
+
 html,body{
     background: #007bff;
     background: linear-gradient(to right, #0062E6, #33AEFF);
@@ -1420,7 +1421,8 @@ table td {
     text-align: center;
 }
 
-/*
-	Hack to remove background from Mobile Safari.
-	Can't use it globally since it destroys checkboxes in Firefox
-*/
+iframe {
+    width: 100%;
+    height: 400px;
+}
+

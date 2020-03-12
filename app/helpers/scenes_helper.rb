@@ -27,6 +27,7 @@ module ScenesHelper
   # @param [Object] bridge_id
   def create_scenes(bridge_id)
     @bridge = Bridge.find(bridge_id)
+    unless @bridge.username.nil?
     scene_data = find_scenes(@bridge.internalip, @bridge.username)
     scene_data.each do |scene|
       @scene = Scene.new
@@ -38,7 +39,8 @@ module ScenesHelper
       @scene.group_id = @group.id
       @scene.save!
       end
-      end
+    end
+    end
   end
 
 end

@@ -71,7 +71,7 @@ class HomesController < ApplicationController
   private
 
   def home_params
-    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :hue_widget, :list_widget, :user_id,
+    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :hue_widget, :calendar_widget, :list_widget, :user_id,
                                  lists_attributes: [
                                      :name
                                  ],

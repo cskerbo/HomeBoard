@@ -27,6 +27,7 @@ module BulbsHelper
   def create_bulbs(bridge_id)
     @groups = Group.all
     @bridge = Bridge.find(bridge_id)
+    unless @bridge.username.nil?
     bulb_data = find_bulbs(@bridge.internalip, @bridge.username)
     bulb_data.each do |bulb|
       @bulb = Bulb.new
@@ -46,6 +47,7 @@ module BulbsHelper
           @bulb.save!
         end
       end
+    end
     end
   end
 

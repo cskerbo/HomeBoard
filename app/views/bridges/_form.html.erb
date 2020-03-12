@@ -26,6 +26,7 @@
       </div>
     </div>
     <h4 class="text-danger"><%= flash[:error] %></h4>
+    <h4 class="text-success"><%= flash[:notice] %></h4>
     <%= bridge.submit "Connect", class: "btn btn-primary pull-right" %>
     <div class="clearfix"></div>
   <% end %>

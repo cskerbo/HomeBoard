@@ -3,9 +3,6 @@
     <% if @user.homes.count == 0 %>
       <h3><%= 'Welcome to HomeBoard!' %></h3>
       <p><%= 'Get starting by creating your first home. Once you create a home, you will have access to a custom dashboard for your house.' %></p>
-  <% else %>
-
-      <p class="card-category"><%= "Enjoying HomeBoard? Great!" %><br><%= "If you have a need for additional dashboards you're in luck - you can create as many HomeBoards as you need." %></p>
     <%end %>
 
       <%= render 'existing_homes' %>
