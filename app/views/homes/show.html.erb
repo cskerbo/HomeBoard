@@ -1,35 +1,36 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-8">
-        <div class="row">
+      <div class="col-md-6 col-sm-12">
       <%= render 'home_widget' %>
+      </div>
       <% if @home.weather_widget? %>
+        <div class="col-md-6 col-sm-12">
         <%= render 'weather_widget' %>
-      <% end %>
         </div>
-      </div>
-      <div class="col-lg-4" id="pet">
+      <% end %>
       <% if @home.pet_widget? %>
+      <div class="col-md-6 col-sm-12" id="pet">
         <%= render 'pet_widget' %>
-      <% end %>
       </div>
-    </div>
-    <div class="row">
-      <% if @home.calendar_widget? %>
-        <%= render 'calendar_widget' %>
       <% end %>
-      <% if @home.list_widget? %>
-        <div class="col-lg-6" id="list">
+      <% if @home.calendar_widget? %>
+    <div class="col-md-6 col-sm-12">
+        <%= render 'calendar_widget' %>
+    </div>
+      <% end %>
+          <% if @home.list_widget? %>
+        <div class="col-md-6 col-sm-12" id="list">
         <%= render 'list_widget' %>
         </div>
       <% end %>
-    </div>
-    <div class="row" id="hue">
       <% if @home.hue_widget? %>
+    <div class="col-md-6 col-sm-12" id="hue">
         <%= render 'homes/hue_widget'%>
-      <% end %>
     </div>
+      <% end %>
+
   </div>
 </div>
 </div>
+

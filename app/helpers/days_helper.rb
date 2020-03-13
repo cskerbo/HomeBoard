@@ -3,6 +3,7 @@ module DaysHelper
   def find_current_day(weather_widget_id)
     current_date = Time.now.strftime('%-m/%-d')
     day = Day.where('date = ? AND weather_widget_id = ?', current_date, weather_widget_id).first
+    day.update(today: true)
     day
   end
 

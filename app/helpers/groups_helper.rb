@@ -64,4 +64,12 @@ module GroupsHelper
     end
   end
 
+  def current_scene?(group_id, scene_id)
+    if group_id == scene_id
+      return true
+    else
+      return false
+    end
+  end
+
 end

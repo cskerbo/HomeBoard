@@ -1,5 +1,5 @@
 <% @bridges.each do |bridge| %>
-  <div class="col-lg-6 col-md-6 col-sm-12">
+
     <div class="card card-stats">
       <div class="card-header card-header-info card-header-icon">
         <div class="card-icon">
@@ -15,41 +15,43 @@
         <% else %>
           <% bridge.groups.order("name ASC").each do |group| %>
             <div class="accordion" id="accordion<%= group.id %>">
-
-              <div class="card">
+              <div class="hue-group" id="hue-widget">
                 <div class="card-header" id="heading<%= group.id %>">
                   <div class="row">
-
-                      <div class="col-1">
+                    <div class="col-3">
                       <%= form_for [bridge, group], remote: true do |f| %>
                         <%= f.hidden_field :state, value: "false" %>
+                        <label class="switch">
                         <%= f.check_box :state, {id: "customSwitch#{group.id}"}, true, false %>
+                          <span class="light-switch round"></span>
+                        </label>
                         <script>
                             $('#customSwitch<%=group.id %>').change(function () {
                                 $("#edit_group_<%=group.id %>").submit();
                             });
                         </script>
                       <% end %>
-                      </div>
-                      <div class="col">
-                        <h2>
-                      <a href="#" data-toggle="collapse" data-target="#collapse<%= group.id %>" aria-expanded="true" aria-controls="collapse<%= group.id %>">
+                    </div>
+                    <div class="col-6">
+                    <h4>
                         <%= group.name %>
                       </a>
-                        </h2>
-                      </div>
-
+                    </h4>
                   </div>
-
+                    <div class="col float-right">
+                        <a href="#collapse<%= group.id %>" data-toggle="collapse" data-target="#collapse<%= group.id %>" aria-expanded="true" aria-controls="collapse<%= group.id %>">
+                          Scenes
+                        </a>
+                    </div>
+                  </div>
                 </div>
-
                 <% group.scenes.each do |scene| %>
                   <div id="collapse<%= group.id %>" class="collapse" aria-labelledby="heading<%= group.id %>" data-parent="#accordion<%= group.id %>">
                     <div class="card-body text-left">
                       <div class="custom-control custom-switch">
                         <%= form_for [scene], remote: true do |f| %>
-                          <%= f.check_box :name, {class: "custom-control-input", id: "sceneSwitch#{scene.id}"} %>
-                          <%= f.label :name, scene.name, class: "custom-control-label", for: "sceneSwitch#{scene.id}" %>
+                          <%= f.check_box :name, {checked: current_scene?(group.scene, scene.identifier), id: "sceneSwitch#{scene.id}"} %>
+                          <%= f.label :name, scene.name, for: "sceneSwitch#{scene.id}" %>
                           <script>
                               $('#sceneSwitch<%=scene.id %>').change(function () {
                                   $("#edit_scene_<%=scene.id %>").submit();
@@ -57,14 +59,12 @@
                           </script>
                         <% end %>
                       </div>
-
                     </div>
-
                   </div>
                 <% end %>
                 <%= form_for [bridge, group], remote: true, :html => {id: "edit_range_#{group.id}", class: "edit_range_#{group.id}"} do |f| %>
                   <%= f.range_field :brightness, {class: "slider", id: "myRange#{group.id}", value: "#{group.brightness}", min: "0", max: "254"} %>
-                  <% end %>
+                <% end %>
                 <script>
                     $('#myRange<%= group.id %>').change(function () {
                         $("#edit_range_<%=group.id %>").submit();
@@ -72,12 +72,11 @@
                 </script>
               </div>
             </div>
+            <br>
           <% end %>
         <% end %>
       </div>
       <div class="card-footer">
       </div>
     </div>
-  </div>
-
 <% end %>

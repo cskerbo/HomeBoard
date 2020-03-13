@@ -11,6 +11,7 @@ module ScenesHelper
     res = http.request(req)
     puts "response #{res.body}"
     puts JSON.parse(res.body)
+    @group.update(scene: @scene.identifier)
   end
 
   def find_scenes(ip, username)
