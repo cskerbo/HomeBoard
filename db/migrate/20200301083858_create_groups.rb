@@ -6,6 +6,7 @@ class CreateGroups < ActiveRecord::Migration[5.1]
       t.string :group_type
       t.integer :identifier
       t.boolean :state
+      t.integer :brightness
       t.integer :bridge_id
     end
   end

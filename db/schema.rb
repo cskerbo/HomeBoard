@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20200305194801) do
     t.string "group_type"
     t.integer "identifier"
     t.boolean "state"
+    t.integer "brightness"
     t.integer "bridge_id"
   end
 

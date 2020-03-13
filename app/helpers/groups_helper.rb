@@ -12,6 +12,18 @@ module GroupsHelper
     puts JSON.parse(res.body)
   end
 
+  def change_group_brightness(bridge_id, group_id)
+    @bridge = Bridge.find(bridge_id)
+    @group = Group.find(group_id)
+    uri = URI("http://#{@bridge.internalip}/api/#{@bridge.username}/groups/#{@group.identifier}/action")
+    http = Net::HTTP.new(uri.host, uri.port)
+    req = Net::HTTP::Put.new(uri.path, 'Content-Type' => 'application/json')
+    req.body = {"bri":@group.brightness}.to_json
+    res = http.request(req)
+    puts "response #{res.body}"
+    puts JSON.parse(res.body)
+  end
+
   def find_groups(ip, username)
     path ="http://#{ip}/api/#{username}/groups"
     uri = URI.parse(path)
@@ -34,6 +46,7 @@ module GroupsHelper
       @group.lights = group[1]['lights']
       @group.group_type = group[1]['type']
       @group.name = group[1]['name']
+      @group.brightness = group[1]['action']['bri']
       @group.identifier = group[0]
       @group.bridge_id = @bridge.id
       @group.save!
@@ -47,6 +60,7 @@ module GroupsHelper
     group_data.each do |group|
       @group = Group.find_by(identifier: group[0])
       @group.update(state: group[1]['state']['all_on'])
+      @group.update(brightness: group[1]['action']['bri'])
     end
   end
 
