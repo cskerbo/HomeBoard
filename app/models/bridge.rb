@@ -1,3 +1,4 @@
+#
 class Bridge < ApplicationRecord
   belongs_to :home
   has_many :bulbs

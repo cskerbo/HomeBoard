@@ -57,11 +57,10 @@
       <% end %>
     <div class="clearfix"></div>
   <% end %>
-  <div class="card-body">
-    <div class="row pull-right">
-      <%= button_to "Return to Dashboard", user_home_path(current_user, @home), method: :get, class: "btn pull-right", style: "background-color: yellow;" %>
-    </div>
   </div>
+  <div class="col">
+    <br>
+    <%= button_to "Return to Dashboard", user_home_path(current_user, @home), method: :get, class: "btn pull-right", style: "background-color: yellow;" %>
   </div>
 </div>
 <% end %>

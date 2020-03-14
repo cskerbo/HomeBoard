@@ -33,7 +33,6 @@ class HomesController < ApplicationController
     helpers.need_weather_update(@home.id) if @home.weather_widget?
     @forecast = helpers.find_current_forecast(@weather_widget.id) if @home.weather_widget?
     @today = helpers.find_current_day(@weather_widget.id) if @home.weather_widget?
-    helpers.quote_of_the_day(@home.id)
     @pet = Pet.find_by_home_id(@home.id)
     @lists = @home.lists
     @new_item = Item.new

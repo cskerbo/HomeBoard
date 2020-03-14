@@ -14,7 +14,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" %>
   </head>
-
   <body data-turbolinks="false">
   <header>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -39,31 +38,25 @@
               <a class="dropdown-item" href="<%= user_homes_path(current_user) %>">My Homes</a>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              My Account
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Profile</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="<%= destroy_user_session_path %>">Logout</a>
-            </div>
-          </li>
-          <li class="nav-item"></li>
+          <a class="nav-link" href="<%= destroy_user_session_path %>">Logout <span class="sr-only">(current)</span></a>
         </ul>
+
       </div>
+
+
     </nav>
+
   </header>
-  <% flash.each do |name, message| %>
-  <% if name =="error" %>
-      <div class="alert alert-danger" role="alert"
+ <% flash.each do |name, message| %>
+      <% if name =="error" %>
+        <div class="alert alert-danger" role="alert">
         <%= message %>
-      </div>
-  <% else %>
-      <div class="alert alert-success" role="alert">
-        <%= message %>
-      </div>
-    <% end %>
+        </div>
+      <% else %>
+        <div class="alert alert-success" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
     <% end %>
       <!-- End Navbar -->
     <%= yield %>
@@ -79,7 +72,5 @@
         </div>
       </div>
     </footer>
-    </div>
-    </div>
   </body>
 </html>
