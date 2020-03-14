@@ -26,3 +26,7 @@ HomeBoard currently includes 6 different widgets to display on the dashboard. Ch
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/cskerbo/HomeBoard. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
