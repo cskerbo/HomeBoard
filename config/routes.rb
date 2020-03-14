@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth', registrations: 'users/registrations' }
   devise_scope :user do
     match '/session/user', to: 'devise/sessions#create', via: :post
+    match '/users/sign_up', to: 'devise/registrations#create', via: :post
   end
   resources :users do
     resources :homes do

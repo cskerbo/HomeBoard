@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20200305194801) do
     t.boolean "state"
     t.integer "brightness"
     t.integer "bridge_id"
+    t.string "scene"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20200305194801) do
     t.boolean "weather_widget", default: false
     t.integer "weather_widget_id"
     t.boolean "calendar_widget", default: false
+    t.boolean "home_widget", default: false
     t.boolean "pet_widget", default: false
     t.boolean "list_widget", default: false
     t.boolean "hue_widget", default: false
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 20200305194801) do
     t.string "identifier"
     t.string "name"
     t.integer "group_id"
+    t.integer "bridge_id"
     t.integer "group_number"
   end
 

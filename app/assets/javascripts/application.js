@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require calendar
 
 
 //= require_tree .
@@ -27,10 +26,6 @@ var options = {
         right: 'agendaDay,agendaWeek,month'
     }
 };
-
-$(document).ready(function() {
-    $("#calendar").fullCalendar(options);
-});
 
 const popupCenter = ({url, title, w, h}) => {
     // Fixes dual-screen position                             Most browsers      Firefox

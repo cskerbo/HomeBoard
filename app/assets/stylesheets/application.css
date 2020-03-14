@@ -11,9 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
-*= require calendar
  *= require_tree .
-*= require calendar
  *= require_self
  */
 
@@ -1537,4 +1535,19 @@ input:checked + .light-switch:before {
     border-radius: 50%;
 }
 
-style: 'cursor:pointer'.htmlSafe()
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+#bridge-finds {
+    background-color: rgba(0,0,0,0.6) !important;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 10px;
+    padding-top: 10px;
+}

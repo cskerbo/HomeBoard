@@ -16,7 +16,7 @@
               <br>
               <% if list.name == "" %>
                 <h5 class="text-center"><%= 'This is a default list created for you, you should' %>
-                  <%= link_to "change the name" + '.', edit_user_home_list_path(@user, @home, list), data: {turbolinks: 'false'} %>
+                  <%= link_to "change the name" + '.', user_home_lists_path(current_user, @home), data: {turbolinks: 'false'} %>
                 </h5>
               <% end %>
               <br>

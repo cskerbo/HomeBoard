@@ -1,17 +1,17 @@
 <div class="content">
   <div class="container-fluid">
-    <a href="javascript:history.back()">< Return to Dashboard</a>
+    <a href="javascript:history.back()">< Return to Previous Page</a>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8 col-lg-8 col-centered">
         <div class="card">
           <div class="card-header card-header-primary">
             <h3 class="card-title">Pet Widget Settings</h3>
           </div>
           <div class="row">
-          <div class="col-md-6">
+          <div class="col-lg-6">
           <%= render 'form' %>
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <div class="card-body">
               <br>
               <div class="card-header card-header-warning">
@@ -32,14 +32,14 @@
                     <div class="col-md-12">
                       <br>
                       <p><u>Example 1</u></p>
-                <%= image_tag("pet_sample_1.png") %>
+                <%= image_tag("pet_sample_1.png", class: "img-fluid") %>
               </div>
                     <div class="col-lg-1 col-md-1 col-sm-1">
                     </div>
                 <div class="col-md-12">
                   <br>
                   <p><u>Example 2</u></p>
-                  <%= image_tag("pet_sample_3.png") %>
+                  <%= image_tag("pet_sample_3.png", class: "img-fluid") %>
                 </div>
               <br>
                   </div>

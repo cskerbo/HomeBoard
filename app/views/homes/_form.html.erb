@@ -12,18 +12,18 @@
         </ul>
       </div>
     <% end %>
-    <h4><b>Home Information</b></h4>
+    <h4><b><u>Home Information</u></b></h4>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8 col-lg-8">
         <div class="form-group">
           <%= f.hidden_field :user_id, value: "#{@user.id}" %>
           <%= f.label :name, "Home Name", class: "bmd-label-floating" %>
-          <%= f.text_field :name, class: "form-control", :required => true %>
+          <%= f.text_field :name, class: "form-control", :required => true, placeholder: "ex - Kerbo Family, The West Home" %>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8 col-lg-8">
         <div class="form-group">
           <%= f.label :street, "Street", class: "bmd-label-floating" %>
           <%= f.text_field :street, class: "form-control", :required => true %>
@@ -54,10 +54,43 @@
       </div>
     </div>
     <br>
-    <h4><b>Widgets</b></h4>
+    <div class="row">
+      <br><br>
+      <div class="col-md-12 pull-right">
+  <%= f.submit class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
+    <br>
+    <h4><b><u>Widgets</u></b></h4>
+    <h5 class="text-warning">Select widgets that you would like to show on your HomeBoard. Widgets can be added or removed as needed.</h5>
+    <br>
+    <div class="card">
+      <br>
     <div class="row">
       <div class="col-md-12">
-        <p>Weather</p>
+        <h5>Home</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+        <div class="form-group">
+          <%= f.hidden_field :home_widget, value: "false" %>
+          <%= f.check_box :home_widget, {class: "form-control"}, true, false %>
+        </div>
+      </div>
+      <div class="col">
+        <p>Displays the home name, a clock, current date, and the quote of the day.</p>
+      </div><div class="col">
+      <%= image_tag("home_widget.png", class: "img-fluid") %>
+    </div>
+    </div>
+      <br>
+    </div>
+    <div class="card">
+      <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h5>Weather</h5>
       </div>
     </div>
     <div class="row">
@@ -70,12 +103,16 @@
       <div class="col">
         <p>Displays current weather data and a 5-day weather forecast based on the location of your home.</p>
       </div><div class="col">
-      <p>Picture of widget</p>
+      <%= image_tag("weather_widget.png", class: "img-fluid") %>
     </div>
     </div>
+      <br>
+    </div>
+    <div class="card">
+      <br>
     <div class="row">
       <div class="col-md-12">
-        <p>Calendar</p>
+        <h5>Calendar</h5>
       </div>
     </div>
     <div class="row">
@@ -88,12 +125,16 @@
       <div class="col">
         <p>Displays an embedded Google calendar of your choice and includes a function to add events to the calendar.</p>
       </div><div class="col">
-      <%= image_tag("calendar_widget.png") %>
+      <%= image_tag("calendar_widget.png", class: "img-fluid") %>
     </div>
     </div>
+      <br>
+    </div>
+    <div class="card">
+      <br>
     <div class="row">
       <div class="col-md-12">
-        <p>Pets</p>
+        <h5>Pets</h5>
       </div>
     </div>
     <div class="row">
@@ -106,12 +147,16 @@
       <div class="col">
         <p>Provides 2 status trackers to keep tabs on actions needed for your pets, such as feeding and walking.</p>
       </div><div class="col">
-      <%= image_tag("pet_widget.png") %>
+      <%= image_tag("pet_widget.png", class: "img-fluid") %>
     </div>
     </div>
+      <br>
+    </div>
+    <div class="card">
+      <br>
     <div class="row">
       <div class="col-md-12">
-        <p>List</p>
+        <h5>List</h5>
       </div>
     </div>
     <div class="row">
@@ -123,13 +168,18 @@
       </div>
       <div class="col">
         <p>Allows for creation and displays of lists. You can create as many lists as you need.</p>
-      </div><div class="col">
-      <%= image_tag("list_widget.png") %>
+      </div>
+      <div class="col">
+      <%= image_tag("list_widget.png", class: "img-fluid") %>
     </div>
     </div>
+      <br>
+    </div>
+    <div class="card">
+      <br>
     <div class="row">
       <div class="col-md-12">
-        <p>Philips Hue</p>
+        <h5>Philips Hue</h5>
       </div>
     </div>
     <div class="row">
@@ -143,10 +193,17 @@
         <p>Displays controls for any lights, groups (rooms), and scenes you have set up with Philips Hue. A Hue bridge and bulbs are <i>required</i> for this widget to function.</p>
       </div>
       <div class="col">
-      <p>Picture of widget</p>
+        <%= image_tag("hue_widget.png", class: "img-fluid") %>
       </div>
     </div>
-    <%= f.submit class: "btn btn-primary pull-right" %>
+      <br>
+    </div>
+    <div class="row">
+      <br><br>
+      <div class="col-md-12 pull-right">
+        <%= f.submit class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
     <div class="clearfix"></div>
   <% end %>
 </div>

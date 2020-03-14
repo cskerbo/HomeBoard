@@ -31,8 +31,8 @@ class HomesController < ApplicationController
     @home = Home.find(params[:id])
     @weather_widget = WeatherWidget.find(@home.weather_widget_id) if @home.weather_widget?
     helpers.need_weather_update(@home.id) if @home.weather_widget?
-    @forecast = helpers.find_current_forecast(@weather_widget.id)
-    @today = helpers.find_current_day(@weather_widget.id)
+    @forecast = helpers.find_current_forecast(@weather_widget.id) if @home.weather_widget?
+    @today = helpers.find_current_day(@weather_widget.id) if @home.weather_widget?
     @pet = Pet.find_by_home_id(@home.id)
     @lists = @home.lists
     @new_item = Item.new
@@ -71,7 +71,7 @@ class HomesController < ApplicationController
   private
 
   def home_params
-    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :hue_widget, :calendar_widget, :list_widget, :user_id,
+    params.require(:home).permit(:name, :zip_code, :street, :city, :state, :weather_widget, :pet_widget, :home_widget, :hue_widget, :calendar_widget, :list_widget, :user_id,
                                  lists_attributes: [
                                      :name
                                  ],

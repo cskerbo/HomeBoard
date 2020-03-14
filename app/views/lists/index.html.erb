@@ -1,11 +1,12 @@
 <div class="content">
   <div class="container-fluid">
-    <a href="<%= user_home_path(current_user, @home)%>">< Return to Dashboard</a>
+    <a href="javascript:history.back()">< Return to Previous Page</a>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8 col-lg-8 col-centered">
         <div class="card">
           <div class="card-header card-header-primary">
             <h3 class="card-title ">Existing Lists</h3>
+            <h5>Rename or delete your existing lists here.</h5>
           </div>
           <% if @home.lists.count != 0 %>
             <%= render 'existing_lists' %>
@@ -19,7 +20,17 @@
           <div class="card-header card-header-success">
             <h3 class="card-title">Create a New List</h3>
           </div>
+          <div class="card-body">
+          <h5 class="text-warning">Create additional lists here. There is no limit to the amount of lists you can create.</h5>
+            <br>
+            <p class="text-success text-center"><i>Remember to complete tasks on your lists so things don't get out of control!</i></p>
+          </div>
           <%= render 'new_form' %>
+          <div class="card-body">
+            <div class="row pull-right">
+          <%= button_to "Return to Dashboard", user_home_path(current_user, @home), method: :get, class: "btn pull-right", style: "background-color: yellow;" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

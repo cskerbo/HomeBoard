@@ -38,6 +38,7 @@ module ScenesHelper
       @scene.name = scene[1]['name']
       @group = Group.find_by(identifier: @scene.group_number)
       @scene.group_id = @group.id
+      @scene.bridge_id = @bridge.id
       @scene.save!
       end
     end

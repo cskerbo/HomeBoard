@@ -18,7 +18,7 @@
               <p class="card-category" style="text-align: center"><%= @today.temp_high.round %>°/<%= @today.temp_low.round %>°</p>
             </div>
             <div class="weather col-md-4">
-              <p class="card-category" style="text-align: center"><%= @today.summary %></p>
+              <p class="card-category" style="text-align: center; margin-bottom: 25%; margin-top: 25%"><%= @today.summary %></p>
             </div>
             <%unless !@today.precipitation_type.nil? %>
               <div class="weather col-md-4">

@@ -25,10 +25,43 @@
         </div>
       </div>
     </div>
-    <h4 class="text-danger"><%= flash[:error] %></h4>
-    <h4 class="text-success"><%= flash[:notice] %></h4>
+    <div class="col">
+    <% if b.username.nil? %>
+        <br>
     <%= bridge.submit "Connect", class: "btn btn-primary pull-right" %>
+      <% else %>
+      <br>
+      <h4 class="text-success">Bridge setup has been completed!</h4>
+        <br>
+
+        <h4>HomeBoard automatically found and added the following to your Hue Widget: </h4>
+        <div class="card-body" id="hue-details">
+          <div class="row text-center">
+          <div class="col" id="bridge-finds">
+        <h5><%= b.bulbs.count %> bulbs</h5>
+          </div>
+          <div class="col" id="bridge-finds">
+          <h5><%= b.groups.count %> groups</h5>
+        <ul class="text-left">
+        <% b.groups.each do |group| %>
+          <li><%= group.name %></li>
+            <% end %>
+        </ul>
+          </div>
+          <div class="col" id="bridge-finds">
+          <h5><%= b.scenes.count %> scenes</h5>
+          </div>
+        </div>
+        </div>
+
+      <% end %>
     <div class="clearfix"></div>
   <% end %>
+  <div class="card-body">
+    <div class="row pull-right">
+      <%= button_to "Return to Dashboard", user_home_path(current_user, @home), method: :get, class: "btn pull-right", style: "background-color: yellow;" %>
+    </div>
+  </div>
+  </div>
 </div>
 <% end %>

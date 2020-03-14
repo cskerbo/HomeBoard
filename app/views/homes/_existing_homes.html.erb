@@ -1,13 +1,9 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8 col-lg-8 col-centered">
     <div class="card">
       <div class="card-header card-header-primary">
         <h3 class="card-title ">Existing Homes</h3>
-        <%if @user.homes.count == 0 %>
-          <h5>You haven't created a home yet! Get started below.</h5>
-          <% else %>
         <h5>Select an existing home to view further details, edit information, or change widget settings.</h5>
-          <% end %>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -16,9 +12,9 @@
               <th>ID</th>
               <th>Name</th>
               <th>Address</th>
-              <th>List Settings</th>
               <th>Home Settings</th>
               <th></th>
+            <th></th>
             </thead>
             <tbody>
             <% @user.homes.each do |home| %>
@@ -26,14 +22,16 @@
                 <td><%= home.id %></td>
                 <td><%= home.name %></td>
                 <td><%= home.address %></td>
-                <td><%= link_to "View/Edit Lists", user_home_lists_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
-                <td><%= button_to "View/Edit Home", edit_user_home_path(current_user, home.id), method: :get %></td>
-                <td><%= button_to "Delete", home, method: :delete, data: { confirm: "Are you sure? This cannot be undone." } %></td>
+                <td><%= button_to "Edit Home", edit_user_home_path(current_user, home.id), method: :get, data: { turbolinks: 'false' }, class: "btn btn-sm btn-primary" %></td>
+                <td><%= button_to "Delete", home, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, class: "btn btn-sm btn-danger" %></td>
                 <td><%= link_to "Go to Dashboard", user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
               </tr>
               <%end %>
             </tbody>
           </table>
+          <%if @user.homes.count == 0 %>
+            <h5 class="text-warning">You haven't created a home yet! Get started below.</h5>
+          <% end %>
         </div>
       </div><br><br>
         <div class="card-header card-header-success">

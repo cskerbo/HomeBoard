@@ -4,6 +4,7 @@ class CreateScenes < ActiveRecord::Migration[5.1]
       t.string :identifier
       t.string :name
       t.integer :group_id
+      t.integer :bridge_id
       t.integer :group_number
     end
   end

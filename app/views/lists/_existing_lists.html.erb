@@ -17,11 +17,11 @@
                 <%= form_for [list] do |f| %>
                   <td colspan="4">
                     <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6 col-sm-6">
                     <%= f.hidden_field :home_id, value: "#{@home.id}"  %>
                     <%= f.text_field :name, class: "form-control", :required => true, placeholder: "List Name" %>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-sm-6">
                     <%= f.submit "Update Name", class: "btn btn-sm btn-primary pull-right" %>
                     </div>
                     </div>
@@ -30,7 +30,7 @@
                   </td>
                 <td><%= list.items.count %></td>
                 <td></td>
-                <td><%= button_to "Delete", list, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }%></td>
+                <td><%= button_to "Delete", list, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, class: "btn btn-sm btn-danger"%></td>
               </tr>
             <% end %>
             </tbody>

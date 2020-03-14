@@ -1,9 +1,11 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
+      <% if @home.home_widget? %>
       <div class="col-md-6 col-sm-12">
-      <%= render 'home_widget' %>
+        <%= render 'home_widget' %>
       </div>
+        <% end %>
       <% if @home.weather_widget? %>
         <div class="col-md-6 col-sm-12">
         <%= render 'weather_widget' %>
