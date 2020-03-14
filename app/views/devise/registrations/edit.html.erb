@@ -1,5 +1,19 @@
-<%= render "devise/shared/error_messages", resource: resource %>
 
+<style>
+  .content {
+    overflow-y: auto;
+    padding: 0px;
+    margin-top: 10px;
+  }
+
+  .container{
+    height: 100vh;
+    align-content: center;
+  }
+</style>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="content">
+  <div class="container">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -43,3 +57,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+  </div>
+</div>

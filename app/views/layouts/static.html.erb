@@ -41,6 +41,11 @@
     font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif
   }
 
+  .content {
+    overflow-y: auto;
+    padding: 0px;
+    margin-top: 10px;
+  }
 
   .container{
     height: 100vh;
@@ -178,9 +183,8 @@
     </div>
   <% end %>
 <% end %>
-<div class="container">
+
   <%= yield %>
-</div>
 
 <footer class="footer navbar-fixed-bottom text-center">
   <p>Homeboard 2020</p>

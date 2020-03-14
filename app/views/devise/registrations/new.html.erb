@@ -1,4 +1,18 @@
+<style>
+  .content {
+    overflow-y: auto;
+    padding: 0px;
+    margin-top: 10px;
+  }
+
+  .container{
+    height: 100vh;
+    align-content: center;
+  }
+</style>
 <%= render "devise/shared/error_messages", resource: resource %>
+<div class="content">
+  <div class="container">
 <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
@@ -44,4 +58,5 @@
         </div>
       </div>
  </div>
-
+  </div>
+</div>
