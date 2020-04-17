@@ -28,10 +28,10 @@ module BridgesHelper
   # @return [Hash]
   def find_bridges
     bridge_data = {}
-    http = Net::HTTP.new('www.meethue.com',443)
-    http.use_ssl = true
-    request = Net::HTTP::Get.new('/api/nupnp')
-    response = http.request request
+    uri = URI('https://discovery.meethue.com')
+    Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
+      request = Net::HTTP::Get.new uri
+      response = http.request request # Net::HTTPResponse object
     case response.code.to_i
     when 200
       result = JSON.parse( response.body )
@@ -41,5 +41,6 @@ module BridgesHelper
     else
       raise 'Unknown error'
     end
-  end
+    end
+    end
 end

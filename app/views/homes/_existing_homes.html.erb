@@ -9,11 +9,11 @@
         <div class="table-responsive">
           <table class="table">
             <thead class=" text-primary">
-              <th>ID</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Home Settings</th>
-              <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Home Settings</th>
+            <th></th>
             <th></th>
             </thead>
             <tbody>
@@ -22,23 +22,24 @@
                 <td><%= home.id %></td>
                 <td><%= home.name %></td>
                 <td><%= home.address %></td>
-                <td><%= button_to "Edit Home", edit_user_home_path(current_user, home.id), method: :get, data: { turbolinks: 'false' }, class: "btn btn-sm btn-primary" %></td>
-                <td><%= button_to "Delete", home, method: :delete, data: { confirm: "Are you sure? This cannot be undone." }, class: "btn btn-sm btn-danger" %></td>
-                <td><%= link_to "Go to Dashboard", user_home_path(current_user, home.id), data: { turbolinks: 'false' } %></td>
+                <td><%= button_to "Edit Home", edit_user_home_path(current_user, home.id), method: :get, data: {turbolinks: 'false'}, class: "btn btn-sm btn-primary" %></td>
+                <td><%= button_to "Delete", home, method: :delete, data: {confirm: "Are you sure? This cannot be undone."}, class: "btn btn-sm btn-danger" %></td>
+                <td><%= link_to "Go to Dashboard", user_home_path(current_user, home.id), data: {turbolinks: 'false'} %></td>
               </tr>
-              <%end %>
+            <% end %>
             </tbody>
           </table>
-          <%if @user.homes.count == 0 %>
+          <% if @user.homes.count == 0 %>
             <h5 class="text-warning">You haven't created a home yet! Get started below.</h5>
           <% end %>
         </div>
-      </div><br><br>
-        <div class="card-header card-header-success">
-          <h3 class="card-title">Create a New Home</h3>
-          <h5>Fill in your house information and select your preferred widgets to generate your custom dashboard.</h5>
-        </div>
-        <%= render 'form' %>
+      </div>
+      <br><br>
+      <div class="card-header card-header-success">
+        <h3 class="card-title">Create a New Home</h3>
+        <h5>Fill in your house information and select your preferred widgets to generate your custom dashboard.</h5>
+      </div>
+      <%= render 'form' %>
     </div>
   </div>
 </div>

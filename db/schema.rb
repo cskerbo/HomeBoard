@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20200305194801) do
     t.boolean "weather_widget", default: false
     t.integer "weather_widget_id"
     t.boolean "calendar_widget", default: false
+    t.string "calendar_link"
     t.boolean "home_widget", default: false
     t.boolean "pet_widget", default: false
     t.boolean "list_widget", default: false
