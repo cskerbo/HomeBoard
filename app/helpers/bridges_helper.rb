@@ -42,5 +42,5 @@ module BridgesHelper
       raise 'Unknown error'
     end
     end
-    end
+  end
 end

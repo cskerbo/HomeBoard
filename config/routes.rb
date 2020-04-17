@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     match '/session/user', to: 'devise/sessions#create', via: :post
     match '/users/sign_up', to: 'devise/registrations#create', via: :post
+    root to: "devise/sessions#new"
   end
   resources :users do
     resources :homes do
@@ -35,5 +36,4 @@ Rails.application.routes.draw do
   resources :pets
   resources :static
   get '/logout', to: 'remove#destroy'
-  root 'static#index'
 end
