@@ -23,6 +23,7 @@
     background-repeat: no-repeat;
     font-family: 'Numans', sans-serif;
     z-index: 10;
+    color: white;
   }
 
   html,body{
@@ -45,6 +46,9 @@
     overflow-y: auto;
     padding: 0px;
     margin-top: 10px;
+  }
+  nav.navbar-light li.nav-item a.nav-link {
+    color: white;
   }
 
   .container{
@@ -151,8 +155,8 @@
 <body data-turbolinks="false">
 
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light" style="">
-    <a class="navbar-brand" href="/">HomeBoard</a>
+  <nav class="navbar navbar-expand-lg navbar-light" style="color:white">
+    <a class="navbar-brand" href="/" style="color:white">HomeBoard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -186,7 +190,10 @@
   <%= yield %>
 
 <footer class="footer navbar-fixed-bottom text-center">
-  <p>Homeboard 2020</p>
+  &copy; HomeBoard
+  <script>
+      document.write(new Date().getFullYear())
+  </script>
 </footer>
 
 </body>
