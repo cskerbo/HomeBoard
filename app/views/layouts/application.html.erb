@@ -31,9 +31,13 @@
               Manage
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <% unless @home.id.nil? %>
-              <a class="dropdown-item" href="<%= edit_user_home_path(current_user, @home) %>">Home Settings</a>
+              <% if @user.admin? %>
+                <a class="dropdown-item" href="<%= admin_index_path %>">Admin</a>
+                <%else %>
+                <% unless @home.id.nil? %>
+                <a class="dropdown-item" href="<%= edit_user_home_path(current_user, @home) %>">Home Settings</a>
                 <% end %>
+                <%end %>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<%= user_homes_path(current_user) %>">My Homes</a>
             </div>

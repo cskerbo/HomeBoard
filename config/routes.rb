@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   end
   resources :pets
   resources :static
+  resources :admin, only: [:index]
   get '/logout', to: 'remove#destroy'
 end

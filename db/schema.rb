@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20200305194801) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.boolean "admin", default: false
     t.string "provider", limit: 50, default: "", null: false
     t.string "uid", limit: 500, default: "", null: false
     t.string "email", default: "", null: false
